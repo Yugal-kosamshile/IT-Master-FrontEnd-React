@@ -7,6 +7,7 @@ import Dashboard from './pages/Dashboard';
 import 'bootstrap/dist/css/bootstrap.min.css'; // Import Bootstrap CSS
 import './App.css';
 import Navbar from './components/Navbar';
+import Footer from './components/Footer';
 
 function App() {
 
@@ -23,6 +24,8 @@ function App() {
             <Route path="/register" element={<Register />} />
             <Route path="*" element={<h1>404 Not Found</h1>} />
           </Routes>
+
+        <Footer />
     </BrowserRouter>
   );
 }
