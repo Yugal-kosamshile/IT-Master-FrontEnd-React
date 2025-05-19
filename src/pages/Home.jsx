@@ -27,21 +27,27 @@ function Home() {
   ];
 
   return (
-    <div className="container py-5">
-      
-      <div className="text-center mb-4">
-        <h1 className="display-5">Available Courses</h1>
-        <p className="lead">Start learning new skills with these hand-picked courses.</p>
+  <>
+      {/* Hero Section Outside of Bootstrap Container */}
+      <div className="home-hero d-flex flex-column justify-content-center align-items-center text-white text-center">
+        <h1 className="potent display-4 fw-bold"> Unlock Your Potential</h1>
+        <hr className="hr-line"/>
+        <h1 className="display-4 fw-bold mb-5">with Expert-Led Courses</h1>
+        
+        <p className="lead mt-3">Learn in-demand skills, master new technologies, and achieve your goals — one course at a time.</p>
       </div>
 
-      <div className="row">
-        {courses.map((course) => (
-          <div className="col-md-4" key={course.id}>
-            <CourseCard course={course} />
-          </div>
-        ))}
+      {/* Courses Section */}
+      <div className="container py-5">
+        <div className="row">
+          {courses.map((course) => (
+            <div className="col-md-4 mb-4" key={course.id}>
+              <CourseCard course={course} />
+            </div>
+          ))}
+        </div>
       </div>
-    </div>
+    </>
   );
 }
 
