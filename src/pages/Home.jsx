@@ -30,7 +30,7 @@ function Home() {
   <>
       {/* Hero Section Outside of Bootstrap Container */}
       <div className="home-hero d-flex flex-column justify-content-center align-items-center text-white text-center">
-        <h1 className="potent display-4 fw-bold"> Unlock Your Potential</h1>
+        <h1 className="potent display-4 fw-bold drop-in"> Unlock Your Potential</h1>
         <hr className="hr-line"/>
         <h1 className="display-4 fw-bold mb-5">with Expert-Led Courses</h1>
         
