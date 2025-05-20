@@ -42,7 +42,7 @@ const Enrollment = () => {
             <label htmlFor="name" className="form-label">Full Name</label>
             <input
               type="text"
-              className="form-control"
+              className="form-control input-field"
               id="name"
               name="name"
               value={formData.name}
@@ -55,7 +55,7 @@ const Enrollment = () => {
             <label htmlFor="email" className="form-label">Email</label>
             <input
               type="email"
-              className="form-control"
+              className="form-control input-field"
               id="email"
               name="email"
               value={formData.email}
@@ -68,7 +68,7 @@ const Enrollment = () => {
             <label htmlFor="mobile" className="form-label">Mobile Number</label>
             <input
               type="tel"
-              className="form-control"
+              className="form-control input-field"
               id="mobile"
               name="mobile"
               value={formData.mobile}
@@ -83,7 +83,7 @@ const Enrollment = () => {
             <select
               id="course"
               name="course"
-              className="form-select"
+              className="form-select input-field"
               value={formData.course}
               onChange={handleChange}
               required
@@ -99,7 +99,7 @@ const Enrollment = () => {
 <div className="col-12">
   <div className="form-check">
     <input
-      className="form-check-input"
+      className="form-check-input input-field"
       type="checkbox"
       id="consent"
       name="consent"
