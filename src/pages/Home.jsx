@@ -27,26 +27,31 @@ function Home() {
   ];
 
   return (
-  <>
+    <>
       {/* Hero Section Outside of Bootstrap Container */}
       <div className="home-hero d-flex flex-column justify-content-center align-items-center text-white text-center">
         <h1 className="potent display-4 fw-bold drop-in"> Unlock Your Potential</h1>
-        <hr className="hr-line"/>
+        <hr className="hr-line" />
         <h1 className="display-4 fw-bold mb-5">with Expert-Led Courses</h1>
-        
+
         <p className="lead mt-3">Learn in-demand skills, master new technologies, and achieve your goals — one course at a time.</p>
       </div>
 
       {/* Courses Section */}
       <div className="container py-5">
+        <h1 className="heading text-center mb-5">Let's Start Learning</h1>
         <div className="row">
           {courses.map((course) => (
-            <div className="col-md-4 mb-4" key={course.id}>
+            <div
+              className="col-12 col-sm-6 col-md-4 col-lg-3 mb-4 d-flex align-items-stretch"
+              key={course.id}
+            >
               <CourseCard course={course} />
             </div>
           ))}
         </div>
       </div>
+
     </>
   );
 }
