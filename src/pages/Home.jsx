@@ -39,7 +39,7 @@ function Home() {
 
       {/* Courses Section */}
       <div className="container py-5">
-        <h1 className="heading text-center mb-5">Let's Start Learning</h1>
+        <h1 className="heading mb-5">Let's Start Learning</h1>
         <div className="row">
           {courses.map((course) => (
             <div
@@ -51,6 +51,36 @@ function Home() {
           ))}
         </div>
       </div>
+
+      {/* benefit Section Outside of Bootstrap Container */}
+     
+    <div className="benefit-section d-flex flex-column align-items-start text-white px-4">
+      <div className="container">
+  <h1 className="heading mb-5 display-5 text-start">Unlock these <i>benefits</i></h1>
+
+  <div className="benefits py-5 mb-5">
+    <div className="row justify-content-center">
+      {[
+        { icon: 'book', title: 'Globally recognized', subtitle: 'Prestigious Degree' },
+        { icon: 'graduation-cap', title: 'Industry relevant', subtitle: 'Curriculum' },
+        { icon: 'suitcase', title: '100% placement', subtitle: 'Assistance' },
+        { icon: 'list', title: 'Easy Finance', subtitle: 'Options' }
+      ].map((benefit, index) => (
+        <div className="col-12 col-sm-6 col-lg-3 mb-4" key={index}>
+          <div className="d-flex align-items-center justify-content-center gap-4">
+            <i className={`fa-solid fa-${benefit.icon} fa-3x`}></i>
+            <div className="text-start">
+              <h5 className="mb-1 fw-bold">{benefit.title}</h5>
+              <p className="mb-0 fs-6">{benefit.subtitle}</p>
+            </div>
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+  </div>
+</div>
+
 
     </>
   );

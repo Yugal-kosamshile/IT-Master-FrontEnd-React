@@ -65,4 +65,41 @@
   font-family: serif, 'Times New Roman', Times; 
   margin-bottom: 20px;
 }
+.benefit-section {
+  background-color: rgb(45, 45, 83);
+  background-size: cover;
+  width: 100%;
+  margin: 0;
+  padding: 3rem 1rem; /* Use padding instead of fixed height */
+}
 
+.benefit-section .heading {
+  color: white;
+}
+
+.benefit-section .benefits {
+  background: linear-gradient(180deg,white, rgb(248, 217, 177));
+  color: #272727;
+  border-radius: 20px;
+  padding: 2rem 1rem;
+  width: 100%;
+}
+
+/* Responsive typography and layout */
+@media (max-width: 768px) {
+  .benefit-section .benefits {
+    padding: 1.5rem 1rem;
+  }
+
+  .benefits i {
+    font-size: 2rem !important;
+  }
+
+  .benefits h5 {
+    font-size: 1rem;
+  }
+
+  .benefits p {
+    font-size: 0.875rem;
+  }
+}
