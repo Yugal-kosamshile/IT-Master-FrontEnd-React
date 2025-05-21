@@ -1,32 +1,33 @@
 import React from 'react';
-import CourseCard from '../components/CourseCard'; // Adjust the path if needed
-import Enrollment from '../components/Enrollment.jsx'; // Adjust the path if needed
-
+import CourseCard from '../components/CourseCard';  
+import Enrollment from '../components/Enrollment.jsx';  
+import courses from '../../store.js';
 function Home() {
-  const courses = [
-    {
-      id: 1,
-      image: 'https://i.pinimg.com/736x/b2/99/54/b2995453cc037390c92e3cafd718459f.jpg',
-      title: 'Core Java Specialization',
-      description:
-        'Learn the Skills Needed to be a Java Programmer. Quickly master the Java programming language and the packages that constitute its rich set of core libraries.',
-    },
-    {
-      id: 2,
-      image: 'https://i.pinimg.com/736x/e5/6f/1c/e56f1c0f774db0827d619e5e6376a73d.jpg',
-      title: 'Python for Data Science, AI & Development',
-      description:
-        'Learn Python - the most popular programming language and for Data Science and Software Development.',
-    },
-    {
-      id: 3,
-      image: 'https://i.pinimg.com/736x/e9/df/78/e9df789803e8b82ab475c41eb0137a2c.jpg',
-      title: 'C# for .NET Developers',
-      description:
-        'Master ASP.NET fundamentals and .NET framework components, using C# syntax for robust web application development. Learn to build web applications.'
-    },
-  ];
+  // const courses = [
+  //   {
+  //     id: 1,
+  //     image: 'https://i.pinimg.com/736x/b2/99/54/b2995453cc037390c92e3cafd718459f.jpg',
+  //     title: 'Core Java Specialization',
+  //     description:
+  //       'Learn the Skills Needed to be a Java Programmer. Quickly master the Java programming language and the packages that constitute its rich set of core libraries.',
+  //   },
+  //   {
+  //     id: 2,
+  //     image: 'https://i.pinimg.com/736x/e5/6f/1c/e56f1c0f774db0827d619e5e6376a73d.jpg',
+  //     title: 'Python for Data Science, AI & Development',
+  //     description:
+  //       'Learn Python - the most popular programming language and for Data Science and Software Development.',
+  //   },
+  //   {
+  //     id: 3,
+  //     image: 'https://i.pinimg.com/736x/e9/df/78/e9df789803e8b82ab475c41eb0137a2c.jpg',
+  //     title: 'C# for .NET Developers',
+  //     description:
+  //       'Master ASP.NET fundamentals and .NET framework components, using C# syntax for robust web application development. Learn to build web applications.'
+  //   },
+  // ];
 
+  
   return (
     <>
       {/* Hero Section Outside of Bootstrap Container */}
@@ -83,59 +84,59 @@ function Home() {
       </div>
 
       {/* advantages */}
-     <div className="advantages-section text-dark p-5">
-  <div className="container py-5">
-    <h1 className="heading mb-5">IT-Master <i>advantages</i></h1>
-    <div className="row justify-content-center">
-      {[
-        {
-          icon: 'calendar',
-          title: 'Flexible & convenient schedule',
-          subtitle: 'Balance your academic pursuits with personal and professional commitments by learning anywhere and at any time, as per your convenience.',
-          bgColor: '#e3f2fd' // Light blue
-        },
-        {
-          icon: 'list-check',
-          title: 'At par with on-campus degrees',
-          subtitle: 'Access UGC-entitled online degrees that are at par with on-campus degrees and accepted for govt. or corporate jobs and higher education.',
-          bgColor: '#f1f8e9' // Light green
-        },
-        {
-          icon: 'tv',
-          title: 'Experienced faculty & mentors',
-          subtitle: 'Acquire quality education and guidance from esteemed faculty and mentors who share their expertise and practical knowledge.',
-          bgColor: '#fff3e0' // Light orange
-        },
-        {
-          icon: 'hexagon-nodes',
-          title: 'Prestigious Manipal alumni network',
-          subtitle: 'Be a part of the prestigious Manipal alumni network to build connections and to gain easy access to a wide range of career opportunities.',
-          bgColor: '#fce4ec' // Light pink
-        }
-      ].map((benefit, index) => (
-        <div className="col-12 col-sm-6 col-lg-3 mb-4" key={index}>
-          <div
-            className="p-4 h-100 rounded text-dark shadow-sm"
-            style={{ backgroundColor: benefit.bgColor }}
-          >
-            <div className="d-flex align-items-start gap-3">
-              <i className={`fa-solid fa-${benefit.icon} fa-2x`}></i>
-              <div className="text-start">
-                <h5 className="mb-1 fw-bold">{benefit.title}</h5>
-                <p className="mb-0 fs-6">{benefit.subtitle}</p>
+      <div className="advantages-section text-dark p-5">
+        <div className="container py-5">
+          <h1 className="heading mb-5">IT-Master <i>advantages</i></h1>
+          <div className="row justify-content-center">
+            {[
+              {
+                icon: 'calendar',
+                title: 'Flexible & convenient schedule',
+                subtitle: 'Balance your academic pursuits with personal and professional commitments by learning anywhere and at any time, as per your convenience.',
+                bgColor: '#e3f2fd' // Light blue
+              },
+              {
+                icon: 'list-check',
+                title: 'At par with on-campus degrees',
+                subtitle: 'Access UGC-entitled online degrees that are at par with on-campus degrees and accepted for govt. or corporate jobs and higher education.',
+                bgColor: '#f1f8e9' // Light green
+              },
+              {
+                icon: 'tv',
+                title: 'Experienced faculty & mentors',
+                subtitle: 'Acquire quality education and guidance from esteemed faculty and mentors who share their expertise and practical knowledge.',
+                bgColor: '#fff3e0' // Light orange
+              },
+              {
+                icon: 'hexagon-nodes',
+                title: 'Prestigious Manipal alumni network',
+                subtitle: 'Be a part of the prestigious Manipal alumni network to build connections and to gain easy access to a wide range of career opportunities.',
+                bgColor: '#fce4ec' // Light pink
+              }
+            ].map((benefit, index) => (
+              <div className="col-12 col-sm-6 col-lg-3 mb-4" key={index}>
+                <div
+                  className="p-4 h-100 rounded text-dark shadow-sm"
+                  style={{ backgroundColor: benefit.bgColor }}
+                >
+                  <div className="d-flex align-items-start gap-3">
+                    <i className={`fa-solid fa-${benefit.icon} fa-2x`}></i>
+                    <div className="text-start">
+                      <h5 className="mb-1 fw-bold">{benefit.title}</h5>
+                      <p className="mb-0 fs-6">{benefit.subtitle}</p>
+                    </div>
+                  </div>
+                </div>
               </div>
-            </div>
+            ))}
           </div>
         </div>
-      ))}
-    </div>
-  </div>
-</div>
+      </div>
 
-{/* enrollment Container */}
-<div className="enrollment-section ">
-  <Enrollment/>
-  </div>
+      {/* enrollment Container */}
+      <div className="enrollment-section ">
+        <Enrollment />
+      </div>
     </>
   );
 }
