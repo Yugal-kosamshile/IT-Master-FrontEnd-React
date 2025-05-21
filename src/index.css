@@ -1,3 +1,4 @@
+/* About */
 .about-page {
     font-family: 'Segoe UI', sans-serif;
 }
@@ -43,6 +44,7 @@
     margin-bottom: 8px;
 }
 
+/* Footer */
 .footer-link {
     color: #ffffff;
     text-decoration: none;

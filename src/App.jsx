@@ -25,7 +25,7 @@ function App() {
             <Route path="/about" element={<AboutUs />} />
             <Route path="/login" element={<Login />} />
             <Route path="/register" element={<Register />} />
-            <Route path="*" element={<h1>404 Not Found</h1>} />
+            <Route path="*" element={<h1 className='not-found'>404 Not Found</h1>} />
           </Routes>
 
         <Footer />
