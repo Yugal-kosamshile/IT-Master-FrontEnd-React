@@ -11,7 +11,7 @@ function CourseCard({ course }) {
           style={{ height: '200px', objectFit: 'cover' }}
         />
         <h5 className="card-title mt-3">{course.title}</h5>
-        <p className="card-text">{course.description}</p>
+        <p className="card-text">{course.shortDescription}</p>
         <a href={`/courses/${course.id}`} className="btn btn-primary">View Details</a>
       </div>
     </div>
