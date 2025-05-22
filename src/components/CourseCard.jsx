@@ -1,4 +1,6 @@
 import React from 'react';
+import courses from '../../store';
+import { Link } from 'react-router-dom';
 
 function CourseCard({ course }) {
   return (
@@ -12,8 +14,8 @@ function CourseCard({ course }) {
         />
         <h5 className="card-title mt-3">{course.title}</h5>
         <p className="card-text">{course.shortDescription}</p>
-        <a href={`/courses/${course.id}`} className="btn btn-primary">View Details</a>
-      </div>
+        <Link to="/courses" className="btn btn-primary">View Details</Link> 
+       </div>
     </div>
   );
 }

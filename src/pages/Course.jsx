@@ -5,7 +5,7 @@ import CourseDetails from './CourseDetails';
 
 const CoursesPage = () => {
   return (
-    <div>
+    <div className="border-top border-light">
      
 
       {/* Details section */}

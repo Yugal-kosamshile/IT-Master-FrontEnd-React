@@ -22,8 +22,8 @@ function Navbar() {
 
 
   return (
-     <div className="d-flex flex-column ">
-        <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
+     <div className="d-flex flex-column">
+        <nav className="navbar navbar-expand-lg navbar-light bg-light">
           <div className="container">
             <Link className="navbar-brand" to="/home">IT-Master</Link>
 
