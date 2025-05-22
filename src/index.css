@@ -2,11 +2,17 @@
 .about-page {
     font-family: 'Segoe UI', sans-serif;
 }
-
+.about-page p{
+    font-size: 1rem;
+}
 .section-about {
     padding: 60px 0;
 }
-
+.about-heading{
+font-size: 3.5rem;
+font-family: serif;
+font-weight: bold;
+}
 .about-image {
     border-radius: 12px;
     object-fit: cover;
@@ -37,6 +43,9 @@
 
 .section-impact {
     padding: 60px 0;
+}
+.impact h3{
+    font-size: 2.5rem;
 }
 
 .stats-grid h3 {

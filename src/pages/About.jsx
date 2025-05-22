@@ -11,7 +11,7 @@ const AboutUs = () => {
                         <div className="row align-items-center">
                             {/* Heading column */}
                             <div className="col-12 col-lg-6 text-center text-lg-start mb-3 mb-lg-0">
-                                <h1 className="heading">Welcome to where possibilities begin</h1>
+                                <h1 className="about-heading">Welcome to where possibilities begin</h1>
                             </div>
 
                             {/* Image column */}
@@ -26,7 +26,7 @@ const AboutUs = () => {
                     </div>
 
 
-                    <h1 className="heading mt-4">About Us</h1>
+                    <h1 className="about-heading mt-4">Who We Are</h1>
                     <blockquote className="about-quote">
                         "Empowering learners everywhere, one course at a time."
                     </blockquote>
@@ -58,7 +58,7 @@ const AboutUs = () => {
             <section className="section-skills text-white">
                 <div className="container text-center">
 
-                    <h2 className="heading text-light">Skills are the Key to Unlocking Potential</h2>
+                    <h2 className="about-heading text-light">Skills are the Key to Unlocking Potential</h2>
                     <p className="mt-3">
                         Whether you want to learn a new skill, train your teams, or share what
                         you know with the world, you’re in the right place. As a leader in
@@ -74,35 +74,44 @@ const AboutUs = () => {
             </section>
 
             {/* Section 3 */}
-            <section className="section-impact bg-white">
+            <section className="section-impact bg-white py-5">
                 <div className="container text-center">
-                    <h2 className="heading">Creating Impact Around the World</h2>
+                    <h2 className="about-heading">Creating Impact Around the World</h2>
                     <p className="mb-4">
                         With our global catalog spanning the latest skills and topics,
                         people and organizations everywhere are able to adapt to change and thrive.
                     </p>
-                    <div className="row text-center stats-grid">
-                        <div className="col-6 col-md-4 col-lg-2 mb-4">
-                            <h3>79M+</h3><p>Learners</p>
+
+                    <div className="impact row p-5">
+                        <div className="col-12 col-md-4 mb-4">
+                            <h3>79M+</h3>
+                            <p>Learners</p>
                         </div>
-                        <div className="col-6 col-md-4 col-lg-2 mb-4">
-                            <h3>85K</h3><p>Instructors</p>
+                        <div className="col-12 col-md-4 mb-4">
+                            <h3>85K</h3>
+                            <p>Instructors</p>
                         </div>
-                        <div className="col-6 col-md-4 col-lg-2 mb-4">
-                            <h3>250K</h3><p>Courses</p>
+                        <div className="col-12 col-md-4 mb-4">
+                            <h3>250K</h3>
+                            <p>Courses</p>
                         </div>
-                        <div className="col-6 col-md-4 col-lg-2 mb-4">
-                            <h3>1.1B+</h3><p>Enrollments</p>
+                        <div className="col-12 col-md-4 mb-4">
+                            <h3>1.1B+</h3>
+                            <p>Enrollments</p>
                         </div>
-                        <div className="col-6 col-md-4 col-lg-2 mb-4">
-                            <h3>75</h3><p>Languages</p>
+                        <div className="col-12 col-md-4 mb-4">
+                            <h3>75</h3>
+                            <p>Languages</p>
                         </div>
-                        <div className="col-6 col-md-4 col-lg-2 mb-4">
-                            <h3>17K+</h3><p>Enterprise Clients</p>
+                        <div className="col-12 col-md-4 mb-4">
+                            <h3>17K+</h3>
+                            <p>Enterprise Clients</p>
                         </div>
                     </div>
                 </div>
             </section>
+
+
 
         </div>
     );
