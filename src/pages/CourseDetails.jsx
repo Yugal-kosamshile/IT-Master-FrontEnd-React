@@ -1,12 +1,12 @@
 import React from 'react';
 
 const CourseDetails = ({ course }) => {
-
-   if (!course) {
-    return <p>Loading course data...</p>; // or return null, or a fallback UI
+  if (!course) {
+    return <p className="text-center mt-5">Loading course data...</p>;
   }
 
   const {
+    id,
     title,
     subtitle,
     rating,
@@ -21,42 +21,69 @@ const CourseDetails = ({ course }) => {
   } = course;
 
   return (
-    <div id={`course-${course.id}`} className="p-6 max-w-4xl mx-auto">
-      <h1 className="text-3xl font-bold mb-2">{title}</h1>
-      <h2 className="text-xl text-gray-600 mb-4">{subtitle}</h2>
+    <div id={`course-${id}`}>
 
-      <div className="mb-4">
-        <p><strong>Rating:</strong> {rating} ⭐ ({students.toLocaleString()} students)</p>
-        <p><strong>Created by:</strong> {createdBy}</p>
-        <p><strong>Start Date:</strong> {startDate}</p>
-        <p><strong>End Date:</strong> {endDate}</p>
-        <p><strong>Language:</strong> {language}</p>
-      </div>
+      {/* Section 1: Header with dark background */}
+      <section className="bg-dark text-white py-5">
+        <div className="container">
+          <div className="mb-4">
+            <h1 className="display-5 fw-bold">{title}</h1>
+            <h2 className="h5 text-light">{subtitle}</h2>
+          </div>
 
-      <div className="mb-4">
-        <h3 className="text-2xl font-semibold mb-2">What you'll learn</h3>
-        <ul className="list-disc pl-6 space-y-1">
-          {learnings.map((item, idx) => (
-            <li key={idx}>{item}</li>
+          <div className="row">
+            <div className="col-md-6">
+              <p><strong>Rating:</strong> {rating} ⭐ ({students.toLocaleString()} students)</p>
+              <p><strong>Created by:</strong> {createdBy}</p>
+            </div>
+           <div className="col-md-6">
+  <p>
+    <strong><i className="bi bi-calendar-event me-2"></i>Start Date:</strong> {startDate}
+  </p>
+  <p>
+    <strong><i className="bi bi-calendar-check me-2"></i>End Date:</strong> {endDate}
+  </p>
+  <p>
+    <strong><i className="bi bi-translate me-2"></i>Language:</strong> {language}
+  </p>
+</div>
+
+          </div>
+        </div>
+      </section>
+
+      {/* Section 2: What you'll learn with checkmarks */}
+      <section className="container my-5">
+        <div className="border p-4 rounded">
+          <h3 className="h4 fw-semibold mb-3">What you'll learn</h3>
+          <ul className="list-unstyled">
+            {learnings.map((item, idx) => (
+              <li key={idx} className="mb-2">
+                <span className="text-success me-2">✔</span>{item}
+              </li>
+            ))}
+          </ul>
+        </div>
+      </section>
+
+      {/* Section 3: Description and Target Audience */}
+      <section className="container mb-5">
+        <div className="mb-4">
+          <h3 className="h4 fw-semibold mb-3">Description</h3>
+          {description.map((paragraph, idx) => (
+            <p key={idx} className="mb-2">{paragraph}</p>
           ))}
-        </ul>
-      </div>
+        </div>
 
-      <div className="mb-4">
-        <h3 className="text-2xl font-semibold mb-2">Description</h3>
-        {description.map((paragraph, idx) => (
-          <p key={idx} className="mt-2">{paragraph}</p>
-        ))}
-      </div>
-
-      <div>
-        <h3 className="text-2xl font-semibold mb-2">Who this course is for</h3>
-        <ul className="list-disc pl-6 space-y-1">
-          {targetAudience.map((audience, idx) => (
-            <li key={idx}>{audience}</li>
-          ))}
-        </ul>
-      </div>
+        <div className="mb-4">
+          <h3 className="h4 fw-semibold mb-3">Who this course is for</h3>
+          <ul className="list-group">
+            {targetAudience.map((audience, idx) => (
+              <li key={idx} className="list-group-item">{audience}</li>
+            ))}
+          </ul>
+        </div>
+      </section>
     </div>
   );
 };
