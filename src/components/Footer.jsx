@@ -46,7 +46,7 @@ function Footer() {
           <div className="col-12 col-md-4">
             <h5 className="text-uppercase">Contact</h5>
             <p className="mb-1">📞 123-456-7890</p>
-            <p className="mb-1">📍 123 Ameerpet, Hyderabad, Telangana, India</p>
+            <p className="mb-1">📍 123 Chandrapur, Maharashtra, India</p>
             <p>📧 support@itmaster.com</p>
           </div>
 
