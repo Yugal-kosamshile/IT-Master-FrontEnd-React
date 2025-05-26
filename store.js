@@ -54,7 +54,7 @@ const courses = [
       "Learn different tips and tricks to improve your programming skills",
       "Learn at your own rhythm with practical exercises"
     ],
-    description:[
+    description: [
       "Programming can sometimes be very hard to learn especially if you have no experience in this field. But, this course has everything that you need to be able to start your programming career or improve your skills by learning all the basics of Python.",
       "If you are in school, need Python for work, want to start a personal project, or just want to learn a new skill — this course is perfect for you.",
       "By the end of this course, you'll have a solid base in Python and will be able to create simple applications right away."
@@ -141,7 +141,6 @@ const courses = [
     'Anyone who is interested in passing the Oracle 1Z0-071 exam!',
   ],
 }
-
 ];
 
 export default courses;
