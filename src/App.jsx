@@ -10,7 +10,7 @@ import './App.css';
 import './index.css'; 
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
-import CourseList from './pages/Course';
+import CourseDetails from './components/CourseDetails';
 
 function App() {
 
@@ -21,7 +21,9 @@ function App() {
           <Routes>
             <Route path="/home" element={<Home />} />
             <Route path="/" element={<Home />} />
-            <Route path="/courses" element={<CourseList/>}/>
+            <Route path="/coursedetails" element={<CourseDetails/>}/>
+            <Route path="/coursedetails/:id" element={<CourseDetails />} />
+            <Route path="/enrolled" element={<h1 className='not-found'>Enrolled Courses Page</h1>} />
             <Route path="/dashboard" element={<Dashboard />}/>
             <Route path="/about" element={<AboutUs />} />
             <Route path="/contact" element={<ContactUs/>}/>
