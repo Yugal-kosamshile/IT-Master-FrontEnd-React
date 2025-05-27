@@ -11,6 +11,8 @@ import './index.css';
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
 import CourseDetails from './components/CourseDetails';
+import Enrollment from './components/Enrollment';
+import AddCourse from './components/AddCourse';
 
 function App() {
 
@@ -23,7 +25,7 @@ function App() {
             <Route path="/" element={<Home />} />
             <Route path="/coursedetails" element={<CourseDetails/>}/>
             <Route path="/coursedetails/:id" element={<CourseDetails />} />
-            <Route path="/enrolled" element={<h1 className='not-found'>Enrolled Courses Page</h1>} />
+            <Route path="/add-course" element={<AddCourse/>} />
             <Route path="/dashboard" element={<Dashboard />}/>
             <Route path="/about" element={<AboutUs />} />
             <Route path="/contact" element={<ContactUs/>}/>

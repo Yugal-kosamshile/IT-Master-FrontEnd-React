@@ -40,12 +40,12 @@ function Navbar() {
               <ul className="navbar-nav ms-auto">
                 <li className="nav-item">
                   <Link className="nav-link" to="/home">Home</Link>
-                </li> 
-                <li className="nav-item">
-                  <Link className="nav-link" to="/enrolled">Enrolled Courses</Link>
                 </li>
                 <li className="nav-item">
                   <Link className="nav-link" to="/dashboard">Dashboard</Link>
+                </li>
+                <li className="nav-item">
+                  <Link className="nav-link" to="/add-course">Add Course</Link>
                 </li>
                  <li className="nav-item">
                   <Link className="nav-link" to="/about">About Us</Link>
