@@ -1,69 +1,92 @@
-import {useState } from 'react';
-import { Link } from 'react-router-dom';
+import { useState, useEffect } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
 
 function Navbar() {
-  
   const [isNavOpen, setIsNavOpen] = useState(false);
+  const [isAdmin, setIsAdmin] = useState(false);
+  const [username, setUsername] = useState("");
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    setIsAdmin(localStorage.getItem("isAdmin") === "true");
+    setUsername(localStorage.getItem("username") || "");
+  }, []);
 
   const toggleNavbar = () => {
-    const dropdownElementList = document.querySelectorAll(".dropdown-toggle");
-    dropdownElementList.forEach((dropdown) => new Dropdown(dropdown));
-
     setIsNavOpen((prev) => !prev);
     const navCollapse = document.getElementById("navbarNav");
     if (navCollapse) {
-      if (isNavOpen) {
-        navCollapse.classList.remove("show");
-      } else {
-        navCollapse.classList.add("show");
-      }
+      navCollapse.classList.toggle("show", !isNavOpen);
     }
   };
 
+  const handleLogout = () => {
+    localStorage.removeItem("isAdmin");
+    localStorage.removeItem("username");
+    setIsAdmin(false);
+    setUsername("");
+    navigate("/login");
+  };
 
   return (
-     <div className="d-flex flex-column">
-        <nav className="navbar navbar-expand-lg navbar-light bg-light">
-          <div className="container">
-            <Link className="navbar-brand" to="/home">IT-Master</Link>
+    <div className="d-flex flex-column">
+      <nav className="navbar navbar-expand-lg navbar-light bg-light">
+        <div className="container">
+          <Link className="navbar-brand" to="/home">IT-Master</Link>
 
-            <button
-              className="navbar-toggler bg-light"
-              type="button"
-              onClick={toggleNavbar}
-              aria-controls="navbarNav"
-              aria-expanded={isNavOpen}
-              aria-label="Toggle navigation"
-            ></button>
+          <button
+            className="navbar-toggler bg-light"
+            type="button"
+            onClick={toggleNavbar}
+            aria-controls="navbarNav"
+            aria-expanded={isNavOpen}
+            aria-label="Toggle navigation"
+          ></button>
 
-             <div className="collapse navbar-collapse" id="navbarNav">
-              <ul className="navbar-nav ms-auto">
-                <li className="nav-item">
-                  <Link className="nav-link" to="/home">Home</Link>
-                </li>
-                <li className="nav-item">
-                  <Link className="nav-link" to="/dashboard">Dashboard</Link>
-                </li>
+          <div className="collapse navbar-collapse" id="navbarNav">
+            <ul className="navbar-nav ms-auto">
+              <li className="nav-item">
+                <Link className="nav-link" to="/home">Home</Link>
+              </li>
+              <li className="nav-item">
+                <Link className="nav-link" to="/dashboard">Dashboard</Link>
+              </li>
+              {isAdmin && (
                 <li className="nav-item">
                   <Link className="nav-link" to="/add-course">Add Course</Link>
                 </li>
-                 <li className="nav-item">
-                  <Link className="nav-link" to="/about">About Us</Link>
-                </li>
-                <li className="nav-item">
-                  <Link className="nav-link" to="/contact">Contact</Link>
-                </li>
-                 <li className="nav-item">
-                  <Link className="nav-link" to="/login">Login</Link>
-                </li>
-                <li className="nav-item">
-                  <Link className="nav-link" to="/register">Register</Link>
-                </li>
-              </ul>
-            </div>
+              )}
+              <li className="nav-item">
+                <Link className="nav-link" to="/about">About Us</Link>
+              </li>
+              <li className="nav-item">
+                <Link className="nav-link" to="/contact">Contact</Link>
+              </li>
+
+              {username ? (
+                <>
+                  <li className="nav-item">
+                    <span className="nav-link disabled">👤 {username}</span>
+                  </li>
+                  <li className="nav-item">
+                    <button className="btn btn-link nav-link" onClick={handleLogout}>Logout</button>
+                  </li>
+                </>
+              ) : (
+                <>
+                  <li className="nav-item">
+                    <Link className="nav-link" to="/login">Login</Link>
+                  </li>
+                  <li className="nav-item">
+                    <Link className="nav-link" to="/register">Register</Link>
+                  </li>
+                </>
+              )}
+            </ul>
           </div>
-        </nav>
-      </div>
+        </div>
+      </nav>
+    </div>
   );
 }
 

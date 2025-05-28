@@ -18,6 +18,7 @@ function App() {
 
   return (
     <BrowserRouter>
+    <div className="d-flex flex-column min-vh-100">
     <Navbar />
         
           <Routes>
@@ -35,6 +36,7 @@ function App() {
           </Routes>
 
         <Footer />
+        </div>
     </BrowserRouter>
   );
 }

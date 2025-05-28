@@ -61,8 +61,7 @@ font-weight: bold;
 }
 
 .footer-link:hover {
-    color: #0d6efd;
-    /* Bootstrap primary */
+    color: rgb(114, 112, 114);
     text-decoration: underline;
 }
 
@@ -70,7 +69,3 @@ font-weight: bold;
     transition: transform 0.3s ease;
 }
 
-.footer i:hover {
-    transform: scale(1.2);
-    color: #0d6efd;
-}

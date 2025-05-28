@@ -26,12 +26,9 @@ const AddCourse = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-
     try {
-      const response = await axios.post('http://localhost:8082/api/add-course', formData, {
-        headers: {
-          'Content-Type': 'application/json'
-        }
+      await axios.post('http://localhost:8082/api/add-course', formData, {
+        headers: { 'Content-Type': 'application/json' }
       });
       setMessage('✅ Course added successfully!');
       setFormData({
@@ -52,23 +49,69 @@ const AddCourse = () => {
   };
 
   return (
-    <div className="max-w-2xl mx-auto p-6 bg-white shadow-lg rounded-lg">
-      <h2 className="text-2xl font-bold mb-4">Add New Course</h2>
-      <form onSubmit={handleSubmit} className="grid grid-cols-1 gap-4">
-        <input type="text" name="title" placeholder="Title" value={formData.title} onChange={handleChange} className="p-2 border rounded" required />
-        <input type="text" name="subtitle" placeholder="Subtitle" value={formData.subtitle} onChange={handleChange} className="p-2 border rounded" required />
-        <textarea name="short_description" placeholder="Short Description" value={formData.short_description} onChange={handleChange} className="p-2 border rounded" required />
-        <input type="text" name="created_by" placeholder="Created By" value={formData.created_by} onChange={handleChange} className="p-2 border rounded" required />
-        <input type="text" name="language" placeholder="Language" value={formData.language} onChange={handleChange} className="p-2 border rounded" required />
-        <input type="number" step="0.01" name="rating" placeholder="Rating" value={formData.rating} onChange={handleChange} className="p-2 border rounded" required />
-        <input type="number" name="students" placeholder="Students" value={formData.students} onChange={handleChange} className="p-2 border rounded" required />
-        <label className="text-sm font-medium">Start Date:</label>
-        <input type="date" name="start_date" value={formData.start_date} onChange={handleChange} className="p-2 border rounded" required />
-        <label className="text-sm font-medium">End Date:</label>
-        <input type="date" name="end_date" value={formData.end_date} onChange={handleChange} className="p-2 border rounded" required />
-        <button type="submit" className="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700">Add Course</button>
-      </form>
-      {message && <p className="mt-4 text-center text-sm text-red-600">{message}</p>}
+    <div className="container mt-5">
+      <div className="card shadow">
+        <div className="card-body">
+          <h2 className="card-title mb-4">Add New Course</h2>
+          <form onSubmit={handleSubmit}>
+            <div className="mb-3">
+              <label className="form-label">Title</label>
+              <input type="text" className="form-control" name="title" value={formData.title} onChange={handleChange} required />
+            </div>
+
+            <div className="mb-3">
+              <label className="form-label">Subtitle</label>
+              <input type="text" className="form-control" name="subtitle" value={formData.subtitle} onChange={handleChange} required />
+            </div>
+
+            <div className="mb-3">
+              <label className="form-label">Short Description</label>
+              <textarea className="form-control" name="short_description" value={formData.short_description} onChange={handleChange} required></textarea>
+            </div>
+
+            <div className="row mb-3">
+              <div className="col-md-6">
+                <label className="form-label">Created By</label>
+                <input type="text" className="form-control" name="created_by" value={formData.created_by} onChange={handleChange} required />
+              </div>
+              <div className="col-md-6">
+                <label className="form-label">Language</label>
+                <input type="text" className="form-control" name="language" value={formData.language} onChange={handleChange} required />
+              </div>
+            </div>
+
+            <div className="row mb-3">
+              <div className="col-md-6">
+                <label className="form-label">Rating</label>
+                <input type="number" step="0.01" className="form-control" name="rating" value={formData.rating} onChange={handleChange} required />
+              </div>
+              <div className="col-md-6">
+                <label className="form-label">Students</label>
+                <input type="number" className="form-control" name="students" value={formData.students} onChange={handleChange} required />
+              </div>
+            </div>
+
+            <div className="row mb-3">
+              <div className="col-md-6">
+                <label className="form-label">Start Date</label>
+                <input type="date" className="form-control" name="start_date" value={formData.start_date} onChange={handleChange} required />
+              </div>
+              <div className="col-md-6">
+                <label className="form-label">End Date</label>
+                <input type="date" className="form-control" name="end_date" value={formData.end_date} onChange={handleChange} required />
+              </div>
+            </div>
+
+            <button type="submit" className="btn btn-primary w-100">Add Course</button>
+          </form>
+
+          {message && (
+            <div className="alert alert-info mt-4 text-center" role="alert">
+              {message}
+            </div>
+          )}
+        </div>
+      </div>
     </div>
   );
 };

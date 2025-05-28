@@ -5,7 +5,7 @@ import '../index.css';
 
 function Footer() {
   return (
-    <footer className="footer bg-dark text-white pt-5 pb-3 mt-auto">
+    <footer className="footer bg-dark text-white pt-5 pb-3 mt-auto mb-0">
       <div className="container">
         <div className="row text-center text-md-start">
 
@@ -20,8 +20,7 @@ function Footer() {
                 <Link to="/about" className="footer-link">About Us</Link>
               </li>
               <li>
-                {/* <Link to="/contactUs" className="footer-link">Contact Us</Link> */}
-              Contact US
+                <Link to="/contact" className="footer-link">Contact Us</Link> 
               </li>
             </ul>
           </div>

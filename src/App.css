@@ -138,3 +138,17 @@
 .input-field {
   border: 1px solid #a5a4a4;
 }
+
+.card-title {
+  font-size: 1.25rem;
+  font-weight: 600;
+}
+
+.card:hover {
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  transition: 0.3s ease;
+}
+
+.form-check-label {
+  cursor: pointer;
+}

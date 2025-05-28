@@ -1,68 +1,38 @@
 import React, { useEffect, useState } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
 import axios from 'axios';
+import { addToDashboard } from '../../store';
 
 function CourseDetails() {
   const { id } = useParams();
   const navigate = useNavigate();
+  const dispatch = useDispatch();
   const [course, setCourse] = useState(null);
-  const [isEnrolled, setIsEnrolled] = useState(false);
-  const username = localStorage.getItem('username');
+
+  const dashboardCourses = useSelector(state => state.dashboard);
+const isEnrolled = dashboardCourses.some(c => c.id === parseInt(id));
 
   useEffect(() => {
-    const fetchData = async () => {
+    const fetchCourse = async () => {
       try {
-        // Fetch course details - no login required
-        const courseRes = await axios.get(`http://localhost:8082/api/get-course/${id}`);
-        setCourse(courseRes.data);
+        const res = await axios.get(`http://localhost:8082/api/get-course/${id}`);
+        setCourse(res.data);
       } catch (error) {
-        console.error('Error fetching course details:', error);
-        alert('Failed to fetch course details.');
-        return;
-      }
-
-      // Only check enrollment if user is logged in
-      if (username) {
-        try {
-          const enrolledRes = await axios.get('http://localhost:8082/api/my-course', {
-            params: { username }
-          });
-          const enrolled = enrolledRes.data.some(c => c.id === parseInt(id));
-          setIsEnrolled(enrolled);
-        } catch (error) {
-          console.error('Error checking enrollment:', error);
-          alert('Failed to verify enrollment.');
-        }
+        console.error('Failed to fetch course details:', error);
+        alert('Could not load course.');
       }
     };
 
-    fetchData();
-  }, [id, username]);
+    fetchCourse();
+  }, [id]);
 
-  const handleEnroll = async () => {
-    if (!username) {
-      alert('Please log in first.');
-      navigate('/login');
-      return;
-    }
+  const handleEnroll = () => {
+    if (!course) return;
 
-    if (!course?.id) {
-      alert('Invalid operation. Please try again later.');
-      return;
-    }
-
-    try {
-      await axios.post('http://localhost:8082/api/my-course', {
-        id: course.id,
-        username
-      });
-      alert('Enrolled successfully!');
-      setIsEnrolled(true);
-      navigate('/dashboard');
-    } catch (error) {
-      console.error('Error during enrollment:', error);
-      alert(error.response?.data?.message || 'Enrollment failed.');
-    }
+    dispatch(addToDashboard(course));
+    alert('Course added to your dashboard!');
+    navigate('/dashboard');
   };
 
   if (!course) return <div className="text-center mt-5">Loading...</div>;
@@ -80,7 +50,7 @@ function CourseDetails() {
 
   return (
     <div className="mb-5">
-      <section className="bg-primary text-white py-5">
+      <section className="bg-dark text-white py-5">
         <div className="container">
           <h1 className="display-4 fw-bold">{title}</h1>
           <p className="lead">{subtitle}</p>
@@ -97,15 +67,15 @@ function CourseDetails() {
             </div>
           </div>
 
-          {!isEnrolled ? (
-            <button className="btn btn-success mt-4" onClick={handleEnroll}>
-              Enroll
-            </button>
-          ) : (
-            <button className="btn btn-light mt-4" disabled>
-              Already Enrolled
-            </button>
-          )}
+           {!isEnrolled ? (
+      <button className="btn btn-success mt-4" onClick={handleEnroll}>
+        Enroll
+      </button>
+    ) : (
+      <button className="btn btn-secondary mt-4" disabled>
+        Already Enrolled
+      </button>
+    )}
         </div>
       </section>
     </div>
