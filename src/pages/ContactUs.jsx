@@ -32,10 +32,21 @@ const ContactUs = () => {
       });
   };
 
-  return (<>
-    <div className="container my-5" style={{ maxWidth: '600px' }}>
-      <div className="card shadow rounded p-4">
-        <h2 className="text-center mb-4">Contact Us</h2>
+  return (
+  <div className="container d-flex justify-content-center my-5">
+    <div className="row shadow rounded overflow-hidden contact-wrapper" style={{ maxWidth: '900px', width: '100%' }}>
+      {/* Left: Image */}
+      <div className="col-md-6 p-0">
+        <img
+          src="https://i.pinimg.com/736x/1c/91/3b/1c913bec30da32ac131339c88658592d.jpg"
+          alt="Contact"
+          className="img-fluid object-fit-cover contact-image"
+        />
+      </div>
+
+      {/* Right: Form */}
+      <div className="col-md-6 bg-white p-4">
+        <h2 className="text-center text-success mb-4">Contact Us</h2>
         <form onSubmit={handleSubmit}>
           <div className="mb-3">
             <label htmlFor="name" className="form-label">Your Name</label>
@@ -77,9 +88,7 @@ const ContactUs = () => {
             ></textarea>
           </div>
           <div className="d-grid">
-            <button type="submit" className="btn btn-primary">
-              Send Message
-            </button>
+            <button type="submit" className="btn btn-success">Send Message</button>
           </div>
         </form>
         {status && (
@@ -89,8 +98,9 @@ const ContactUs = () => {
         )}
       </div>
     </div>
-    </>
-  );
+  </div>
+);
+
 };
 
 export default ContactUs;

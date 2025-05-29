@@ -52,13 +52,28 @@
 }
 
 /*Course card style*/
-.card {
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+.card-title {
+  font-size: 1.2rem;
+  font-weight: 500;
+}
+
+.card-text {
+  font-size: 0.95rem;
+  color: #333;
 }
 
 .card:hover {
-  transform: translateY(-8px);
-  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.15);
+  transform: translateY(-5px);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+}
+
+/* Button hover effect */
+.btn-outline-dark:hover {
+  background-color: black;
+  color: #fff;
+  border-color:rgb(55, 55, 102);
+  transition: all 0.3s ease;
 }
 
 /*style for all the headings*/
@@ -151,4 +166,75 @@
 
 .form-check-label {
   cursor: pointer;
+}
+
+/* add course .jsx */
+
+.add-course-container{
+   background: #f4f7ff;
+   width: 100vw;
+}
+.custom-container {
+  max-width: 700px;
+  margin: auto;
+  
+}
+
+.course-card {
+  
+  border-radius: 1rem;
+  padding: 2rem;
+  transition: box-shadow 0.3s ease;
+  border: 1px solid #c3e6cb;
+}
+
+.course-card:hover {
+  box-shadow: 0 0.75rem 1.5rem rgba(40, 167, 69, 0.2);
+}
+
+
+input,
+textarea {
+  border-radius: 0.5rem;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+input:focus,
+textarea:focus {
+  border-color: #28a745;
+  box-shadow: 0 0 0 0.2rem rgba(40, 167, 69, 0.25);
+}
+
+.btn-success {
+  background-color: #28a745;
+  border-color: #28a745;
+}
+
+.btn-success:hover {
+  background-color: #218838;
+  border-color: #1e7e34;
+}
+
+
+/* coure details.jsx */
+.course-details-card {
+  max-width: 1000px;
+  margin: auto;
+  border: 1px solid #c3e6cb;
+}
+
+
+.course-img {
+  height: 250px;
+  object-fit: cover;
+  border-bottom: 1px solid #c3e6cb;
+}
+
+.course-details-card p {
+  margin-bottom: 0.75rem;
+  color: #fff;
+}
+
+ .course-details-card h2, h4 {
+  margin-bottom: 1rem;
 }

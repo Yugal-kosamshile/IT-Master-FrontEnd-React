@@ -1,12 +1,12 @@
 import React, { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { removeCourse } from '../../store'; // Adjust path as needed
+import { removeCourse } from '../../store';
+import "../styles/Dashboard.css";  
 
 function Dashboard() {
   const dispatch = useDispatch();
   const dashboardCourses = useSelector(state => state.dashboard);
 
-  // Local state to track completion status per course
   const [statusMap, setStatusMap] = useState(
     dashboardCourses.reduce((acc, course) => {
       acc[course.id] = 'incomplete';
@@ -23,57 +23,51 @@ function Dashboard() {
   };
 
   return (
-    <div className="container mt-5">
-      <h2 className="mb-4 text-center">📚 Welcome to Your Dashboard</h2>
+    <div className="container my-5 dashboard-container">
+      <h2 className="mb-4  fw-bold text-dark heading">Welcome To Dashboard</h2>
 
       {dashboardCourses.length === 0 ? (
-        <p className="text-muted text-center">No enrolled courses yet.</p>
+        <p className="text-muted text-center fs-5">No enrolled courses yet.</p>
       ) : (
         <div className="row g-4">
           {dashboardCourses.map(course => (
             <div key={course.id} className="col-md-6 col-lg-4">
-              <div className="card h-100 shadow-sm border-0">
+              <div className="card dashboard-card h-100 shadow-sm">
                 <div className="card-body d-flex flex-column">
-                  <h5 className="card-title text-primary">{course.title}</h5>
-                  <p className="card-text mb-1"><strong>Instructor:</strong> {course.created_by}</p>
-                  <p className="card-text mb-1"><strong>Start Date:</strong> {course.start_date}</p>
-                  <p className="card-text mb-3"><strong>End Date:</strong> {course.end_date}</p>
+                  <h5 className="card-title text-dark">{course.title}</h5>
+                  <p className="text-muted"><strong>Instructor:</strong> {course.created_by}</p>
+                  <p><strong>Start:</strong> {course.start_date}</p>
+                  <p><strong>End:</strong> {course.end_date}</p>
 
-                  {/* Status checkboxes */}
+                  {/* Status Badge */}
                   <div className="mb-3">
-                    <div className="form-check form-check-inline">
-                      <input
-                        className="form-check-input"
-                        type="radio"
-                        name={`status-${course.id}`}
-                        id={`incomplete-${course.id}`}
-                        checked={statusMap[course.id] === 'incomplete'}
-                        onChange={() => handleStatusChange(course.id, 'incomplete')}
-                      />
-                      <label className="form-check-label" htmlFor={`incomplete-${course.id}`}>
-                        Incomplete
-                      </label>
-                    </div>
-                    <div className="form-check form-check-inline">
-                      <input
-                        className="form-check-input"
-                        type="radio"
-                        name={`status-${course.id}`}
-                        id={`completed-${course.id}`}
-                        checked={statusMap[course.id] === 'completed'}
-                        onChange={() => handleStatusChange(course.id, 'completed')}
-                      />
-                      <label className="form-check-label" htmlFor={`completed-${course.id}`}>
-                        Completed
-                      </label>
-                    </div>
+                    <span className={`badge rounded-pill ${statusMap[course.id] === 'completed' ? 'bg-success' : 'bg-secondary'}`}>
+                      {statusMap[course.id] === 'completed' ? '✅ Completed' : '⏳ Incomplete'}
+                    </span>
                   </div>
 
+                  {/* Status Toggle */}
+                  <div className="form-check form-switch mb-4">
+                    <input
+                      className="form-check-input"
+                      type="checkbox"
+                      id={`status-${course.id}`}
+                      checked={statusMap[course.id] === 'completed'}
+                      onChange={() =>
+                        handleStatusChange(course.id, statusMap[course.id] === 'completed' ? 'incomplete' : 'completed')
+                      }
+                    />
+                    <label className="form-check-label" htmlFor={`status-${course.id}`}>
+                      Mark as {statusMap[course.id] === 'completed' ? 'Incomplete' : 'Completed'}
+                    </label>
+                  </div>
+
+                  {/* Remove Button */}
                   <button
-                    className="btn btn-outline-danger mt-auto"
+                    className="btn btn-danger btn-remove mt-auto"
                     onClick={() => handleRemove(course.id)}
                   >
-                    Remove
+                    🗑 Remove Course
                   </button>
                 </div>
               </div>

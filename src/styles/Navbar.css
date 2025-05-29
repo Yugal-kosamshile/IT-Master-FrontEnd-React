@@ -1,0 +1,16 @@
+
+
+.navbar-toggler-icon {
+  filter: invert(1);
+}
+#navbarNav.collapse:not(.show) {
+  display: block;
+  height: 0;
+  overflow: hidden;
+  transition: height 0.35s ease;
+}
+
+#navbarNav.show {
+  height: auto;
+  transition: height 0.35s ease;
+}

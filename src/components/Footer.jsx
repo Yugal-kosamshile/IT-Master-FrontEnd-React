@@ -53,7 +53,7 @@ function Footer() {
 
         <hr className="bg-light mt-4" />
         <p className="text-center mb-0 small">
-          © {new Date().getFullYear()} <strong>ITMaster</strong>. All Rights Reserved. ❤️YugalK
+          © {new Date().getFullYear()} <strong>IT-Master</strong>. All Rights Reserved. ❤️YugalK
         </p>
       </div>
     </footer>

@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import axios from 'axios';
+import axios from 'axios'; 
 
 const AddCourse = () => {
   const [formData, setFormData] = useState({
@@ -49,13 +49,14 @@ const AddCourse = () => {
   };
 
   return (
-    <div className="container mt-5">
-      <div className="card shadow">
+    <div className="add-course-container">
+    <div className="custom-container my-5">
+      <div className="card course-card shadow-lg">
         <div className="card-body">
-          <h2 className="card-title mb-4">Add New Course</h2>
+          <h2 className="card-title text-center mb-4 text-success">🌿 Add New Course</h2>
           <form onSubmit={handleSubmit}>
             <div className="mb-3">
-              <label className="form-label">Title</label>
+              <label className="form-label">Course Title</label>
               <input type="text" className="form-control" name="title" value={formData.title} onChange={handleChange} required />
             </div>
 
@@ -66,7 +67,7 @@ const AddCourse = () => {
 
             <div className="mb-3">
               <label className="form-label">Short Description</label>
-              <textarea className="form-control" name="short_description" value={formData.short_description} onChange={handleChange} required></textarea>
+              <textarea className="form-control" name="short_description" value={formData.short_description} onChange={handleChange} rows="3" required></textarea>
             </div>
 
             <div className="row mb-3">
@@ -86,12 +87,12 @@ const AddCourse = () => {
                 <input type="number" step="0.01" className="form-control" name="rating" value={formData.rating} onChange={handleChange} required />
               </div>
               <div className="col-md-6">
-                <label className="form-label">Students</label>
+                <label className="form-label">Enrolled Students</label>
                 <input type="number" className="form-control" name="students" value={formData.students} onChange={handleChange} required />
               </div>
             </div>
 
-            <div className="row mb-3">
+            <div className="row mb-4">
               <div className="col-md-6">
                 <label className="form-label">Start Date</label>
                 <input type="date" className="form-control" name="start_date" value={formData.start_date} onChange={handleChange} required />
@@ -102,17 +103,18 @@ const AddCourse = () => {
               </div>
             </div>
 
-            <button type="submit" className="btn btn-primary w-100">Add Course</button>
+            <button type="submit" className="btn btn-success w-100 fw-bold"> Add Course</button>
           </form>
 
           {message && (
-            <div className="alert alert-info mt-4 text-center" role="alert">
+            <div className={`alert mt-4 text-center ${message.startsWith('✅') ? 'alert-success' : 'alert-danger'}`} role="alert">
               {message}
             </div>
           )}
         </div>
       </div>
     </div>
+  </div>
   );
 };
 

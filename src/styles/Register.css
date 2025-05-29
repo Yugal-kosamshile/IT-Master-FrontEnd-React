@@ -1,0 +1,107 @@
+
+/* Register.css */
+.register-wrapper {
+  background: #f4f7ff; 
+  animation: fadeInUp 0.7s ease-in-out;
+}
+
+/* Form + slogan box */
+.register-box {
+  width: 90%;
+  max-width: 900px;
+  overflow: hidden;
+  background: #fff;
+  border-radius: 20px;
+  box-shadow: 0 8px 25px rgba(0, 128, 0, 0.1);
+  animation: popIn 0.6s ease-in-out;
+  transition: transform 0.3s ease;
+}
+
+.register-box:hover {
+  transform: scale(1.01);
+}
+
+
+.form-section input {
+  transition: all 0.3s ease;
+  border-radius: 10px;
+}
+
+.form-section input:focus {
+  border-color: #28a745;
+  box-shadow: 0 0 10px rgba(40, 167, 69, 0.2);
+}
+
+.form-control:hover{
+    border: solid 2px #28a745;
+}
+
+.register-btn {
+  transition: all 0.3s ease;
+  border-radius: 10px;
+  font-weight: 600;
+}
+
+.register-btn:hover {
+  background-color: #218838;
+  transform: scale(1.03);
+}
+
+.slogan-section { 
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+  animation: slideInRight 0.8s ease forwards;
+  background-image: url('../public/slogan-bg.jpg');
+  background-size: cover;
+  background-position: center; 
+}
+
+.slogan-text {
+  font-size: 1.75rem;
+  font-weight: bold;
+  line-height: 1.4;
+  animation: fadeIn 1s ease-out;
+}
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(25px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes popIn {
+  from {
+    transform: scale(0.95);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+@keyframes slideInRight {
+  from {
+    transform: translateX(50px);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}

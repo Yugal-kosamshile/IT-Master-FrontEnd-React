@@ -13,6 +13,7 @@ import Footer from './components/Footer';
 import CourseDetails from './components/CourseDetails';
 import Enrollment from './components/Enrollment';
 import AddCourse from './components/AddCourse';
+import NotFound from './components/NotFound';
 
 function App() {
 
@@ -32,7 +33,7 @@ function App() {
             <Route path="/contact" element={<ContactUs/>}/>
             <Route path="/login" element={<Login />} />
             <Route path="/register" element={<Register />} />
-            <Route path="*" element={<h1 className='not-found'>404 Not Found</h1>} />
+            <Route path="*" element={<NotFound/>} />
           </Routes>
 
         <Footer />

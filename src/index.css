@@ -92,14 +92,75 @@ font-weight: bold;
 }
 
 /* login page */
-.login-page {
-  min-height: 100vh;
-  background-image: url('https://source.unsplash.com/1600x900/?education,learning');
-  background-size: cover;
-  background-position: center;
-  backdrop-filter: blur(3px);
+/* === Common container === */
+.login-wrapper {
+  background: #f4f7ff;
 }
 
-.login-form {
-  background-color: rgba(255, 255, 255, 0.95);
+/* === Login layout box === */
+.login-box {
+  width: 90%;
+  max-width: 900px;
+  border-radius: 16px;
+  overflow: hidden;
+}
+
+/* === Left Image Section === */
+.login-image {
+  background-image: url('https://i.pinimg.com/736x/4a/90/33/4a903338c0e478248153bd8f3f6f6745.jpg');  
+  background-size: cover;
+  background-position: center;
+  min-height: 400px;
+}
+
+/* === Form === */
+.form-section {
+  background-color: #fff;
+}
+
+.form-control {
+  border-radius: 8px;
+  padding: 12px;
+  font-size: 15px;
+  border: 1px solid #ccc;
+}
+
+.form-control:focus {
+  border-color: #3474f1;
+  box-shadow: 0 0 0 0.2rem rgba(52, 116, 241, 0.25);
+}
+
+.login-btn {
+  background-color: #3474f1;
+  font-weight: 600;
+  padding: 12px;
+  border-radius: 8px;
+  border: none;
+}
+
+.login-btn:hover {
+  background-color: #2457c5;
+}
+
+/* not found page  */
+.not-found-page {
+  padding: 2rem;
+}
+
+.not-found-img{
+  max-width: 800px;
+  width: 40%;
+  border-radius: 12px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+}
+
+/* contact us page  */
+.contact-wrapper {
+  border-left: 5px solid #198754;
+  border-radius: 0.5rem;
+}
+
+.contact-image {
+  object-fit: cover;
+  height: 80%;
 }

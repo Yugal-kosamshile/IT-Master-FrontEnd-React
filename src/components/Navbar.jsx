@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
-import { logout } from '../../store'; // Adjust path to your slice/actions
+import { clearDashboard, logout } from '../../store'; // Adjust path to your slice/actions
 
 function Navbar() {
   const [isNavOpen, setIsNavOpen] = useState(false);
@@ -24,7 +24,9 @@ function Navbar() {
   };
 
   const handleLogout = () => {
-    dispatch(logout());            // ✅ Dispatch Redux logout action
+    dispatch(logout());     
+    dispatch(clearDashboard())
+
     localStorage.removeItem("isAdmin");  // Keep these if used separately
     localStorage.removeItem("username");
 

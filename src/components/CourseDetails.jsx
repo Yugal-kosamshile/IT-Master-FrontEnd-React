@@ -1,8 +1,8 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react'; 
 import { useParams, useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import axios from 'axios';
-import { addToDashboard } from '../../store'; // Adjust the import path
+import { addToDashboard } from '../../store'; 
 
 function CourseDetails() {
   const { id } = useParams();
@@ -10,16 +10,12 @@ function CourseDetails() {
   const dispatch = useDispatch();
 
   const [course, setCourse] = useState(null);
-
-  // ✅ Get login state directly from Redux
   const isLoggedIn = useSelector((state) => state.auth.isLoggedIn);
-  console.log("isLoggedIn:", isLoggedIn); 
-
-  // ✅ Get dashboard courses from Redux
   const dashboardCourses = useSelector(state => state.dashboard);
+  const courseImage = useSelector(state => state.images[id]); // ⬅️ Course image by ID
+
   const isEnrolled = dashboardCourses.some(c => c.id === parseInt(id));
 
-  // ✅ Fetch course details on mount
   useEffect(() => {
     const fetchCourse = async () => {
       try {
@@ -34,11 +30,9 @@ function CourseDetails() {
     fetchCourse();
   }, [id]);
 
-  // ✅ Enroll logic using Redux and login state
   const handleEnroll = () => {
     if (!isLoggedIn) {
       alert('You must be logged in to enroll in a course.');
-     
       return;
     }
 
@@ -57,13 +51,13 @@ function CourseDetails() {
     navigate('/dashboard');
   };
 
-  // ✅ Show loading state
   if (!course) return <div className="text-center mt-5">Loading...</div>;
 
   const {
     title = 'Untitled Course',
     subtitle = '',
     rating = 'N/A',
+    short_description = '', 
     students = 0,
     created_by = 'Unknown',
     start_date = 'N/A',
@@ -72,37 +66,39 @@ function CourseDetails() {
   } = course;
 
   return (
-    <div className="mb-5">
-      <section className="bg-dark text-white py-5">
-        <div className="container">
-          <h1 className="display-4 fw-bold">{title}</h1>
-          <p className="lead">{subtitle}</p>
-
-          <div className="row mt-4">
-            <div className="col-md-6">
-              <p><strong>Rating:</strong> {rating} ⭐ ({students.toLocaleString()} students)</p>
-              <p><strong>Created by:</strong> {created_by}</p>
-            </div>
-            <div className="col-md-6">
-              <p><strong>Start Date:</strong> {start_date}</p>
-              <p><strong>End Date:</strong> {end_date}</p>
-              <p><strong>Language:</strong> {language}</p>
-            </div>
+    <div className="container my-5">
+      <div className="course-details-card row shadow-lg rounded-4 overflow-hidden">
+        {/* Left Column */}
+        <div className="col-md-5  bg-dark p-0">
+          <img src={courseImage} alt="Course" className="img-fluid w-100 course-img" />
+          <div className="p-4">
+            <p><strong>Rating:</strong> {rating} ⭐ ({students.toLocaleString()} students)</p>
+            <p><strong>Created by:</strong> {created_by}</p>
+            <p><strong>Start Date:</strong> {start_date}</p>
+            <p><strong>End Date:</strong> {end_date}</p>
+            <p><strong>Language:</strong> {language}</p>
           </div>
+        </div>
 
-          <div className="mt-4">
+        {/* Right Column */}
+        <div className="col-md-7 p-5 bg-white">
+          <h2 className="text-dark fw-bold">{title}</h2>
+          <h4 className="text-muted">{subtitle}</h4>
+          <p className="mt-4 text-dark">{short_description}</p>
+
+          <div className="mt-5">
             {!isEnrolled ? (
-              <button className="btn btn-success" onClick={handleEnroll}>
-                Enroll
+              <button className="btn btn-primary btn-lg w-100" onClick={handleEnroll}>
+                Enroll in Course
               </button>
             ) : (
-              <button className="btn btn-secondary" disabled>
+              <button className="btn btn-secondary btn-lg w-100" disabled>
                 Already Enrolled
               </button>
             )}
           </div>
         </div>
-      </section>
+      </div>
     </div>
   );
 }
