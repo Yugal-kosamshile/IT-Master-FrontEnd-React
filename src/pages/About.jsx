@@ -6,51 +6,76 @@ const AboutUs = () => {
 
             {/* Section 1 */}
             <section className="section-about bg-light">
-                <div className="container">
-                    <div className="container my-5">
-                        <div className="row align-items-center">
-                            {/* Heading column */}
-                            <div className="col-12 col-lg-6 text-center text-lg-start mb-3 mb-lg-0">
-                                <h1 className="about-heading">Welcome to where possibilities begin</h1>
-                            </div>
 
-                            {/* Image column */}
-                            <div className="col-12 col-lg-6 text-center">
-                                <img
-                                    src="https://i.pinimg.com/1200x/4d/a3/7f/4da37f4c3bd17e344cf93b5ea4ca73dc.jpg"
-                                    alt="Online Course"
-                                    className="img-fluid about-image rounded"
-                                />
-                            </div>
+                <div className="my-0">
+                    <div className="mb-5 welcome-about position-relative overflow-hidden">
+
+                        {/* Video Background */}
+                        <video
+                            autoPlay
+                            muted
+                            loop
+                            playsInline
+                            className="video-bg"
+                        >
+                            <source src="/bg.mp4" type="video/mp4" />
+                            Your browser does not support the video tag.
+                        </video>
+
+                        {/* Content */}
+                        <div className="text-center position-relative z-1">
+                            <h1 className="about-heading mb-5">Welcome To Where Possibilities Begin</h1>
+                            <img
+                                src="/topicon.png"
+                                alt="logo"
+                                style={{ height: "250px", width: "auto" }}
+                                className="mb-3 mx-auto d-block"
+                            />
                         </div>
                     </div>
+                </div>
 
 
-                    <h1 className="about-heading mt-4">Who We Are</h1>
-                    <blockquote className="about-quote">
-                        "Empowering learners everywhere, one course at a time."
-                    </blockquote>
-                    <p>
-                        Welcome to the Online Course Management System! Our platform is
-                        dedicated to making education accessible, engaging, and effective
-                        for everyone.
-                    </p>
-                    <p>
-                        Whether you're a student eager to learn new skills or an instructor
-                        passionate about sharing knowledge, our system provides the tools
-                        you need to succeed.
-                    </p>
-                    <p><strong>Features:</strong></p>
-                    <ul>
-                        <li>Browse and enroll in a variety of courses</li>
-                        <li>Track your learning progress</li>
-                        <li>Interactive lessons and resources</li>
-                        <li>Connect with instructors and peers</li>
-                    </ul>
-                    <p>
-                        Join us on this journey to transform the way you learn and teach.
-                        Together, we can build a brighter future through education!
-                    </p>
+                <div className="container">
+                    <div className="row align-items-center">
+
+                        {/* Who we are section */}
+                        <div className="col-12 col-lg-6 mb-3 mb-lg-0">
+                            <h1 className="about-heading mt-4">Who We Are</h1>
+                            <blockquote className="about-quote">
+                                "Empowering learners everywhere, one course at a time."
+                            </blockquote>
+                            <p>
+                                Welcome to the Online Course Management System! Our platform is
+                                dedicated to making education accessible, engaging, and effective
+                                for everyone.
+                            </p>
+                            <p>
+                                Whether you're a student eager to learn new skills or an instructor
+                                passionate about sharing knowledge, our system provides the tools
+                                you need to succeed.
+                            </p>
+                            <p><strong>Features:</strong></p>
+                            <ul>
+                                <li>Browse and enroll in a variety of courses</li>
+                                <li>Track your learning progress</li>
+                                <li>Interactive lessons and resources</li>
+                                <li>Connect with instructors and peers</li>
+                            </ul>
+                            <p>
+                                Join us on this journey to transform the way you learn and teach.
+                                Together, we can build a brighter future through education!
+                            </p>
+                        </div>
+                        {/* image section */}
+                        <div className="col-12 col-lg-6 text-center">
+                            <img
+                                src="https://i.pinimg.com/1200x/4d/a3/7f/4da37f4c3bd17e344cf93b5ea4ca73dc.jpg"
+                                alt="Online Course"
+                                className="img-fluid about-image rounded"
+                            />
+                        </div>
+                    </div>
                 </div>
             </section>
 

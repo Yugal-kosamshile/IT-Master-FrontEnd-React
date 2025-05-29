@@ -1,5 +1,6 @@
 import { configureStore, createSlice } from "@reduxjs/toolkit";
 
+// --- Dashboard Slice ---
 const dashboardSlice = createSlice({
   name: "dashboard",
   initialState: JSON.parse(localStorage.getItem("dashboard") || "[]"),
@@ -27,11 +28,49 @@ const dashboardSlice = createSlice({
   }
 });
 
-const Store = configureStore({
-  reducer: {
-    dashboard: dashboardSlice.reducer // ✅ this is the correct usage
+// --- Auth Slice ---
+const authSlice = createSlice({
+  name: "auth",
+  initialState: JSON.parse(localStorage.getItem("auth")) || {
+    isLoggedIn: false,
+    user: null
+  },
+  reducers: {
+    loginSuccess: (state, action) => {
+      state.isLoggedIn = true;
+      state.user = action.payload;
+      localStorage.setItem("auth", JSON.stringify({
+        isLoggedIn: true,
+        user: action.payload
+      }));
+    },
+    logout: (state) => {
+      state.isLoggedIn = false;
+      state.user = null;
+      localStorage.removeItem("auth");
+    }
   }
 });
 
+
+// --- Store ---
+const Store = configureStore({
+  reducer: {
+    dashboard: dashboardSlice.reducer,
+    auth: authSlice.reducer
+  }
+});
+
+// --- Exports ---
 export default Store;
-export const { addToDashboard, removeCourse, clearDashboard, setCourses } = dashboardSlice.actions;
+export const {
+  addToDashboard,
+  removeCourse,
+  clearDashboard,
+  setCourses
+} = dashboardSlice.actions;
+
+export const {
+  loginSuccess,
+  logout
+} = authSlice.actions;

@@ -27,7 +27,7 @@ function Register() {
 
     const requestData = {
       username: form.name,
-      mobile: parseInt(form.mobile, 10),
+      mobile: form.mobile,
       email: form.email,
       password: form.password
     };

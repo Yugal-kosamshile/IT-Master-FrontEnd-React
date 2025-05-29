@@ -1,11 +1,14 @@
 import { useState, useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+import { logout } from '../../store'; // Adjust path to your slice/actions
 
 function Navbar() {
   const [isNavOpen, setIsNavOpen] = useState(false);
   const [isAdmin, setIsAdmin] = useState(false);
   const [username, setUsername] = useState("");
   const navigate = useNavigate();
+  const dispatch = useDispatch();
 
   useEffect(() => {
     setIsAdmin(localStorage.getItem("isAdmin") === "true");
@@ -21,10 +24,13 @@ function Navbar() {
   };
 
   const handleLogout = () => {
-    localStorage.removeItem("isAdmin");
+    dispatch(logout());            // ✅ Dispatch Redux logout action
+    localStorage.removeItem("isAdmin");  // Keep these if used separately
     localStorage.removeItem("username");
+
     setIsAdmin(false);
     setUsername("");
+
     navigate("/login");
   };
 
@@ -32,7 +38,14 @@ function Navbar() {
     <div className="d-flex flex-column">
       <nav className="navbar navbar-expand-lg navbar-light bg-light">
         <div className="container">
-          <Link className="navbar-brand" to="/home">IT-Master</Link>
+          <Link className="navbar-brand" to="/home">
+            <img
+              src="/topicon.png"
+              alt="IT-Master Logo"
+              height="50"
+              className="d-inline-block align-text-top"
+            />
+          </Link>
 
           <button
             className="navbar-toggler bg-light"
