@@ -56,6 +56,10 @@
   font-size: 1.2rem;
   font-weight: 500;
 }
+.course-carousel .slick-slide {
+  display: flex;
+  justify-content: center;
+}
 
 .card-text {
   font-size: 0.95rem;

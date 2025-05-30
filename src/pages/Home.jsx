@@ -2,9 +2,43 @@ import React, { useEffect, useState } from 'react';
 import CourseCard from '../components/CourseCard';  
 import Enrollment from '../components/Enrollment.jsx';   
 import axios from 'axios';
+import Slider from "react-slick";
+
+
 function Home() {
 
   const [courses, setCourses] = useState([]);
+  const maxCoursesToShow = 9;
+const visibleCourses = courses.slice(0, maxCoursesToShow);
+const slidesToShow = Math.max(1, Math.min(4, visibleCourses.length));
+
+const sliderSettings = {
+  dots: true,
+  infinite: visibleCourses.length > slidesToShow,
+  speed: 800,
+  slidesToShow,
+  slidesToScroll: 1,
+  cssEase: "ease-in-out", 
+  pauseOnHover: true,
+  arrows: true,
+  autoplay: true,
+  autoplaySpeed: 2000,
+  responsive: [
+    {
+      breakpoint: 1200,
+      settings: { slidesToShow: Math.max(1, Math.min(3, visibleCourses.length)) }
+    },
+    {
+      breakpoint: 768,
+      settings: { slidesToShow: Math.max(1, Math.min(2, visibleCourses.length)) }
+    },
+    {
+      breakpoint: 576,
+      settings: { slidesToShow: 1 }
+    }
+  ]
+};
+
 
   useEffect(() => {
     axios.get('http://localhost:8082/api/get-courses')
@@ -25,18 +59,18 @@ function Home() {
 
       {/* Courses Section */}
       <div className="container py-5">
-        <h1 className="heading mb-5">Let's Start Learning</h1>
-        <div className="row">
-          {courses.map((course) => (
-            <div
-              className="col-12 col-sm-6 col-md-4 col-lg-3 mb-4 d-flex align-items-stretch"
-              key={course.id}
-            >
-              <CourseCard course={course} />
-            </div>
-          ))}
+  <h1 className="heading mb-5">Let's Start Learning</h1>
+  <div className="course-carousel">
+    <Slider {...sliderSettings}>
+      {courses.slice(0,9).map((course) => (
+        <div key={course.id} className="px-2">
+          <CourseCard course={course} />
         </div>
-      </div>
+      ))}
+    </Slider>
+  </div>
+</div>
+
 
       {/* benefit Section Outside of Bootstrap Container */}
 

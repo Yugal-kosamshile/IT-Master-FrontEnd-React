@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
-import { clearDashboard, logout } from '../../store'; // Adjust path to your slice/actions
+import { clearDashboard, logout } from '../../store';
 
 function Navbar() {
   const [isNavOpen, setIsNavOpen] = useState(false);
@@ -60,8 +60,12 @@ function Navbar() {
 
           <div className="collapse navbar-collapse" id="navbarNav">
             <ul className="navbar-nav ms-auto">
+              
               <li className="nav-item">
                 <Link className="nav-link" to="/home">Home</Link>
+              </li>
+              <li className="nav-item">
+                <Link className="nav-link" to="/courses">Courses</Link>
               </li>
               <li className="nav-item">
                 <Link className="nav-link" to="/dashboard">Dashboard</Link>

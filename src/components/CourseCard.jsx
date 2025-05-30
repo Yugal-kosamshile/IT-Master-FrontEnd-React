@@ -8,7 +8,6 @@ function CourseCard({ course, onRemove }) {
   const courseImage = imageMap[course.id] || '/images/default.jpg';
 
   const isAdmin = useSelector(state => state.auth.user?.isAdmin === true);
-  console.log(isAdmin);
   const handleRemove = async () => {
     const confirm = window.confirm(`Are you sure you want to delete "${course.title}"?`);
     if (!confirm) return;

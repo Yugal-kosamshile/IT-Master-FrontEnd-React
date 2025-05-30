@@ -1,8 +1,8 @@
-import React, { useEffect, useState } from 'react'; 
+import React, { useEffect, useState } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import axios from 'axios';
-import { addToDashboard } from '../../store'; 
+import { addToDashboard } from '../../store';
 
 function CourseDetails() {
   const { id } = useParams();
@@ -57,7 +57,7 @@ function CourseDetails() {
     title = 'Untitled Course',
     subtitle = '',
     rating = 'N/A',
-    short_description = '', 
+    short_description = '',
     students = 0,
     created_by = 'Unknown',
     start_date = 'N/A',
@@ -86,17 +86,25 @@ function CourseDetails() {
           <h4 className="text-muted">{subtitle}</h4>
           <p className="mt-4 text-dark">{short_description}</p>
 
-          <div className="mt-5">
-            {!isEnrolled ? (
-              <button className="btn btn-primary btn-lg w-100" onClick={handleEnroll}>
-                Enroll in Course
-              </button>
-            ) : (
-              <button className="btn btn-secondary btn-lg w-100" disabled>
-                Already Enrolled
+          <div className="mt-5 d-flex gap-3 flex-column flex-md-row">
+            <button
+              className={`btn ${isEnrolled ? 'btn-secondary' : 'btn-primary'} btn-lg flex-fill`}
+              onClick={handleEnroll}
+              disabled={isEnrolled}
+            >
+              {isEnrolled ? 'Already Enrolled' : 'Enroll in Course'}
+            </button>
+
+            {isLoggedIn && (
+              <button
+                className="btn btn-outline-success btn-lg flex-fill"
+                onClick={() => navigate(`/update-course/${id}`)}
+              >
+                ✏️ Edit Course
               </button>
             )}
           </div>
+
         </div>
       </div>
     </div>
