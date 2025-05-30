@@ -2,7 +2,8 @@ import React, { useState } from "react";
 import axios from "axios";
 import { useNavigate, Link } from "react-router-dom";
 import { useDispatch } from "react-redux";
-import { loginSuccess } from "../../store"; 
+import { loginSuccess } from "../../store";
+import "../styles/Login.css"; // Make sure this file contains the styles below
 
 function Login() {
   const [form, setForm] = useState({ username: "", password: "" });
@@ -15,96 +16,76 @@ function Login() {
   };
 
   const handleSubmit = async (e) => {
-  e.preventDefault();
+    e.preventDefault();
+    const { username, password } = form;
 
-  const { username, password } = form;
+    if (username === "yugal" && password === "yugal@123") {
+      const user = { username: "yugal", isAdmin: true };
+      dispatch(loginSuccess(user));
+      localStorage.setItem("username", "yugal");
+      localStorage.setItem("isAdmin", "true");
+      setMessage("Admin login successful");
+      navigate("/home");
+      return;
+    }
 
-  // Hardcoded admin check
-  if (username === "yugal" && password === "yugal@123") {
-    const user = { username: "yugal", isAdmin: true };
-    dispatch(loginSuccess(user));
+    try {
+      const res = await axios.post("http://localhost:8082/api/login", form, {
+        headers: {
+          "Content-Type": "application/json",
+        },
+      });
 
-    localStorage.setItem("username", "yugal");
-    localStorage.setItem("isAdmin", "true");
-    setMessage("Admin login successful");
-    navigate("/home");
-    return;
-  }
-
-  // Normal login flow for other users
-  try {
-    const res = await axios.post("http://localhost:8082/api/login", form, {
-      headers: {
-        "Content-Type": "application/json",
-      },
-    });
-
-    const user = { username };
-    dispatch(loginSuccess(user));
-
-    localStorage.setItem("username", username);
-    localStorage.removeItem("isAdmin");
-    setMessage(res.data);
-    navigate("/home");
-  } catch (err) {
-    setMessage(err.response?.data || "Login failed");
-    localStorage.removeItem("isAdmin");
-    localStorage.removeItem("username");
-  }
-};
-
+      const user = { username };
+      dispatch(loginSuccess(user));
+      localStorage.setItem("username", username);
+      localStorage.removeItem("isAdmin");
+      setMessage(res.data);
+      navigate("/home");
+    } catch (err) {
+      setMessage(err.response?.data || "Login failed");
+      localStorage.removeItem("isAdmin");
+      localStorage.removeItem("username");
+    }
+  };
 
   return (
-    <div className="container-fluid login-wrapper d-flex align-items-center justify-content-center min-vh-80 py-5">
-      <div className="row login-box shadow">
-        {/* Left - Image */}
-        <div className="col-md-6 login-image d-none d-md-block"></div>
+    <div className="login-container">
+      <div className="login-card">
+        <h2 className="login-title">Sign in</h2>
+        <form onSubmit={handleSubmit}>
+          <label htmlFor="username" className="login-label">User Name</label>
+          <input
+            type="text"
+            id="username"
+            className="login-input"
+            name="username"
+            value={form.username}
+            onChange={handleChange}
+            required
+          />
 
-        {/* Right - Login Form */}
-        <div className="col-md-6 form-section p-5 bg-white">
-          <h2 className="mb-3 text-success fw-bold ">Welcome back</h2>
-          <p className="mb-4 text-muted">Please log in and connect with us</p>
+          <label htmlFor="password" className="login-label">Password</label>
+          <input
+            type="password"
+            id="password"
+            className="login-input"
+            name="password"
+            value={form.password}
+            onChange={handleChange}
+            required
+          />
 
-          <form onSubmit={handleSubmit}>
-            <div className="mb-3">
-              <input
-                type="text"
-                className="form-control"
-                name="username"
-                value={form.username}
-                onChange={handleChange}
-                placeholder="Enter username"
-                required
-              />
-            </div>
-            <div className="mb-3">
-              <input
-                type="password"
-                className="form-control"
-                name="password"
-                value={form.password}
-                onChange={handleChange}
-                placeholder="Enter password"
-                required
-              />
-            </div>
-            <button type="submit" className="btn btn-success w-100 login-btn">
-              Login
-            </button>
-          </form>
+          <button type="submit" className="login-button">
+            Submit
+          </button>
+        </form>
 
-          {message && (
-            <div className="alert alert-info mt-3 text-center" role="alert">
-              {message}
-            </div>
-          )}
+        {message && <div className="login-message">{message}</div>}
 
-          <p className="mt-4 text-center">
-            Don’t have an account?{" "}
-            <Link to="/register" className="text-success fw-bold text-decoration-none">
-              Register here
-            </Link>
-          </p>
+        <div className="login-footer">
+          <span>Don't have an account?</span>{" "}
+          <Link to="/register" className="login-link">Register</Link>
         </div>
       </div>
     </div>

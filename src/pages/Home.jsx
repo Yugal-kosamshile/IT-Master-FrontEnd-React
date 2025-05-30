@@ -49,13 +49,30 @@ const sliderSettings = {
   return (
     <>
       {/* Hero Section Outside of Bootstrap Container */}
-      <div className="home-hero d-flex flex-column justify-content-center align-items-center text-white text-center">
-        <h1 className="potent display-4 fw-bold drop-in"> Unlock Your Potential</h1>
-        <hr className="hr-line" />
-        <h1 className="display-4 fw-bold mb-5">with Expert-Led Courses</h1>
+      <div className="position-relative overflow-hidden text-white text-center" style={{ height: '90vh' }}>
 
-        <p className="lead mt-3">Learn in-demand skills, master new technologies, and achieve your goals — one course at a time.</p>
-      </div>
+  {/* Video Background */}
+  <video
+    autoPlay
+    muted
+    loop
+    playsInline
+    className="video-bg-home position-absolute top-0 start-0 w-100 h-100 object-fit-cover"
+  >
+    <source src="/bg-home.mp4" type="video/mp4" />
+    Your browser does not support the video tag.
+  </video>
+
+  {/* Content */}
+  <div className="home-hero d-flex flex-column justify-content-center align-items-center position-relative z-1" style={{ height: '100%' }}>
+    <h1 className="potent display-4 fw-bold drop-in">Unlock Your Potential</h1>
+    <hr className="hr-line" />
+    <h1 className="display-4 fw-bold mb-5"> Expert-Led Courses</h1>
+    <p className="lead mt-2">Learn in-demand skills, master new technologies, and achieve your goals — one course at a time.</p>
+  </div>
+
+</div>
+
 
       {/* Courses Section */}
       <div className="container py-5">

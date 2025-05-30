@@ -24,7 +24,8 @@ const AboutUs = () => {
 
                         {/* Content */}
                         <div className="text-center position-relative z-1">
-                            <h1 className="about-heading mb-5">Welcome To Where Possibilities Begin</h1>
+                            <h1 className="about-heading mb-5">Welcome to the Start of Infinite Possibilities
+                                <br /> and Limitless Growth</h1>
                             <img
                                 src="/topicon.png"
                                 alt="logo"

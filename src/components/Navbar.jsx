@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { clearDashboard, logout } from '../../store';
+import "../styles/Navbar.css"
 
 import { Dropdown } from "bootstrap";
 

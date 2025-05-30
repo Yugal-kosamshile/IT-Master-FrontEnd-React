@@ -17,7 +17,6 @@ export const AppProvider = ({ children }) => {
       const response = await axios.get("/get-courses");
       setData(response.data);
     } catch (error) {
-      console.error("Error fetching /get-courses:", error);
       setIsError(error.message);
     }
   };

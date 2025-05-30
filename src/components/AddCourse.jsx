@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
+import '../styles/AddCourse.css';
 
 function AddCourse() {
   const [course, setCourse] = useState({
@@ -45,47 +46,37 @@ function AddCourse() {
         headers: { 'Content-Type': 'multipart/form-data' }
       })
         .then((response) => {
-          console.log("Product added successfully:", response.data);
-          alert("Product added successfully");
+          console.log("Course added successfully:", response.data);
+          alert("✅ Course added successfully");
         })
         .catch((error) => {
-          console.error("Error adding product:", error);
-          alert("Error adding product");
+          console.error("Error adding course:", error);
+          alert("❌ Error adding course");
         });
 
     } catch (error) {
       console.error(error);
       setMessage('❌ Error adding course: ' + error.message);
     }
-navigate("/courses");
 
+    navigate("/courses");
   };
 
   return (
-    <div className="add-course-container">
-      <div className="custom-container my-5">
-        <div className="card course-card shadow-lg">
+    <div className="add-course-wrapper py-5">
+      <div className="custom-container my-4">
+        <div className="card course-card shadow-lg text-white">
           <div className="card-body">
             <h2 className="card-title text-center mb-4 text-success">🌿 Add New Course</h2>
             <form onSubmit={handleSubmit}>
               <div className="mb-3">
                 <label className="form-label">Course Title</label>
-                <input
-                  type="text"
-                  className="form-control"
-                  name="title"
-                  value={course.title}
-                  onChange={handleInputChange}
-                  required />
+                <input type="text" className="form-control" name="title" value={course.title} onChange={handleInputChange} required />
               </div>
 
               <div className="mb-3">
                 <label className="form-label">Subtitle</label>
-                <input
-                  type="text"
-                  className="form-control"
-                  name="subtitle"
-                  value={course.subtitle} onChange={handleInputChange} required />
+                <input type="text" className="form-control" name="subtitle" value={course.subtitle} onChange={handleInputChange} required />
               </div>
 
               <div className="mb-3">
@@ -126,19 +117,12 @@ navigate("/courses");
                 </div>
               </div>
 
-              {/* adding image  */}
-              <div className="col-md-4">
-                <label className="form-label">
-                  <h6>Image</h6>
-                </label>
-                <input
-                  className="form-control"
-                  type="file"
-                  onChange={handleImageChange}
-                />
+              <div className="mb-4">
+                <label className="form-label">Course Image</label>
+                <input className="form-control" type="file" onChange={handleImageChange} />
               </div>
-<br />
-              <button type="submit" className="btn btn-success w-100 fw-bold"> Add Course</button>
+
+              <button type="submit" className="btn btn-success w-100 fw-bold">Add Course</button>
             </form>
 
             {message && (
@@ -151,6 +135,6 @@ navigate("/courses");
       </div>
     </div>
   );
-};
+}
 
 export default AddCourse;

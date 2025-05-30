@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import axios from "axios";
-import { useNavigate } from "react-router-dom"; 
-import "../styles/Register.css"
+import { useNavigate } from "react-router-dom";
+import "../styles/Register.css";
 
 function Register() {
   const [form, setForm] = useState({
@@ -11,6 +11,7 @@ function Register() {
     password: "",
     confirmPassword: ""
   });
+
   const [message, setMessage] = useState("");
   const navigate = useNavigate();
 
@@ -60,11 +61,12 @@ function Register() {
   };
 
   return (
-    <div className="container-fluid register-wrapper d-flex align-items-center justify-content-center min-vh-100">
-      <div className="row register-box shadow">
-        {/* Left - Form */}
-        <div className="col-md-6 form-section p-5 bg-white">
-          <h3 className="mb-4 text-success fw-bold">Registration</h3>
+    <div className="container-fluid  register-wrapper d-flex align-items-center justify-content-center min-vh-100">
+      <div className="row my-5 register-box shadow-lg">
+
+        {/* Left - Form Section */}
+        <div className="col-md-6 form-section p-5">
+          <h3 className="mb-4">Create your account</h3>
           <form onSubmit={handleSubmit}>
             <div className="mb-3">
               <input
@@ -73,7 +75,7 @@ function Register() {
                 name="name"
                 value={form.name}
                 onChange={handleChange}
-                placeholder="Enter your name"
+                placeholder="Full Name"
                 required
               />
             </div>
@@ -84,7 +86,7 @@ function Register() {
                 name="mobile"
                 value={form.mobile}
                 onChange={handleChange}
-                placeholder="Enter your mobile"
+                placeholder="Mobile Number"
                 required
               />
             </div>
@@ -95,7 +97,7 @@ function Register() {
                 name="email"
                 value={form.email}
                 onChange={handleChange}
-                placeholder="Enter your email"
+                placeholder="Email Address"
                 required
               />
             </div>
@@ -106,7 +108,7 @@ function Register() {
                 name="password"
                 value={form.password}
                 onChange={handleChange}
-                placeholder="Create password"
+                placeholder="Password"
                 required
               />
             </div>
@@ -117,7 +119,7 @@ function Register() {
                 name="confirmPassword"
                 value={form.confirmPassword}
                 onChange={handleChange}
-                placeholder="Confirm password"
+                placeholder="Confirm Password"
                 required
               />
             </div>
@@ -127,24 +129,27 @@ function Register() {
                 I accept all terms & conditions
               </label>
             </div>
-            <button type="submit" className="btn btn-success w-100 register-btn">
+            <button type="submit" className="btn register-btn w-100">
               Register Now
             </button>
           </form>
           <p className="mt-3 text-center">
-            Already have an account? <a href="/login" className="text-success fw-bold text-decoration-none">Login now</a>
+            Already have an account?{" "}
+            <a href="/login" className="text-success fw-bold text-decoration-none">
+              Login now
+            </a>
           </p>
           {message && (
-            <div className="alert alert-info mt-3 text-center" role="alert">
+            <div className="alert mt-3 text-center" role="alert">
               {message}
             </div>
           )}
         </div>
 
-        {/* Right - Slogan */}
-        <div className="col-md-6 slogan-section ">
-          <h1 className=" text-center text-success slogan-text">
-            Start your learning journey from here
+        {/* Right - Quote Section */}
+        <div className="col-md-6 slogan-section">
+          <h1 className="slogan-text">
+            “An investment in knowledge pays the best interest.”<br />– Benjamin Franklin
           </h1>
         </div>
       </div>

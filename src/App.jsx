@@ -10,7 +10,6 @@ import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 import './App.css';
 import './index.css';  
-import "../src/styles/Navbar.css"
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
 import CourseDetails from './components/CourseDetails';

@@ -1,19 +1,27 @@
-
 /*home page hero style*/
 .home-hero {
-  background: url('https://i.pinimg.com/1200x/21/0c/c2/210cc2b19dd04434009cf6df985647f3.jpg') no-repeat center center;
-  background-size: cover;
+ 
   height: 80vh;
   width: 100%;
   margin: 0;
   padding: 0;
+}
+.home-hero p{
+  font-weight: 400;
+  font-size: 1.3rem;
+}
+.video-bg-home {
+  object-fit: cover;
+  width: 80%;
+  height: 80%;
+  z-index: 0;
 }
 
 .home-hero .potent {
   color: orange;
 }
 .hr-line{
-  width: 15%;
+  width: 50%;
   height: 4px;
   background-color: orange;
   border: none;
@@ -27,7 +35,7 @@
     opacity: 0;
   }
   to {
-    width: 60px;
+    width: 200px;
     opacity: 0.9;
   }
 }
@@ -172,52 +180,6 @@
   cursor: pointer;
 }
 
-/* add course .jsx */
-
-.add-course-container{
-   background: #f4f7ff;
-   width: 100vw;
-}
-.custom-container {
-  max-width: 700px;
-  margin: auto;
-  
-}
-
-.course-card {
-  
-  border-radius: 1rem;
-  padding: 2rem;
-  transition: box-shadow 0.3s ease;
-  border: 1px solid #c3e6cb;
-}
-
-.course-card:hover {
-  box-shadow: 0 0.75rem 1.5rem rgba(40, 167, 69, 0.2);
-}
-
-
-input,
-textarea {
-  border-radius: 0.5rem;
-  transition: border-color 0.2s ease, box-shadow 0.2s ease;
-}
-
-input:focus,
-textarea:focus {
-  border-color: #28a745;
-  box-shadow: 0 0 0 0.2rem rgba(40, 167, 69, 0.25);
-}
-
-.btn-success {
-  background-color: #28a745;
-  border-color: #28a745;
-}
-
-.btn-success:hover {
-  background-color: #218838;
-  border-color: #1e7e34;
-}
 
 
 /* coure details.jsx */
