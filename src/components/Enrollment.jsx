@@ -11,8 +11,8 @@ const Enrollment = () => {
   });
 
   const serviceID = 'service_q28t8d9';
-    const templateID = 'template_wavp705';
-    const userID = 'DKHk1eACS7Up_cZgy';
+  const templateID = 'template_wavp705';
+  const userID = 'DKHk1eACS7Up_cZgy';
 
   const handleChange = (e) => {
     const { name, value, type, checked } = e.target;

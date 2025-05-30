@@ -1,8 +1,9 @@
-import React, { useEffect, useState } from 'react';
-import { useParams, useNavigate } from 'react-router-dom';
+import { useParams, useNavigate } from 'react-router-dom'; 
+import { useEffect, useState } from 'react'; 
 import { useDispatch, useSelector } from 'react-redux';
 import axios from 'axios';
 import { addToDashboard } from '../../store';
+
 
 function CourseDetails() {
   const { id } = useParams();
@@ -10,27 +11,42 @@ function CourseDetails() {
   const dispatch = useDispatch();
 
   const [course, setCourse] = useState(null);
-  const isLoggedIn = useSelector((state) => state.auth.isLoggedIn);
-  const dashboardCourses = useSelector(state => state.dashboard);
-  const courseImage = useSelector(state => state.images[id]); // ⬅️ Course image by ID
+  const [imageUrl, setImageUrl] = useState('');
+const dashboardCourses = useSelector(state => state.dashboard);
 
+  const isAdmin = useSelector(state => state.auth.user?.isAdmin === true);
   const isEnrolled = dashboardCourses.some(c => c.id === parseInt(id));
+  const isLoggedIn = useSelector((state) => state.auth.isLoggedIn);
 
   useEffect(() => {
     const fetchCourse = async () => {
       try {
         const res = await axios.get(`http://localhost:8082/api/get-course/${id}`);
         setCourse(res.data);
+        if (res.data.imageName) {
+          fetchImage(res.data.imageName);
+        }
       } catch (error) {
         console.error('Failed to fetch course details:', error);
         alert('Could not load course.');
       }
     };
 
+    const fetchImage = async (imageName) => {
+      try {
+        const response = await axios.get(`http://localhost:8082/api/course/${id}/image`, {
+          responseType: 'blob',
+        });
+        setImageUrl(URL.createObjectURL(response.data));
+      } catch (error) {
+        console.error('Failed to load course image:', error);
+      }
+    };
+
     fetchCourse();
   }, [id]);
 
-  const handleEnroll = () => {
+    const handleEnroll = () => {
     if (!isLoggedIn) {
       alert('You must be logged in to enroll in a course.');
       return;
@@ -51,6 +67,7 @@ function CourseDetails() {
     navigate('/dashboard');
   };
 
+
   if (!course) return <div className="text-center mt-5">Loading...</div>;
 
   const {
@@ -69,9 +86,25 @@ function CourseDetails() {
     <div className="container my-5">
       <div className="course-details-card row shadow-lg rounded-4 overflow-hidden">
         {/* Left Column */}
-        <div className="col-md-5  bg-dark p-0">
-          <img src={courseImage} alt="Course" className="img-fluid w-100 course-img" />
-          <div className="p-4">
+        <div className="col-md-5 bg-dark p-0">
+
+          <div>
+            {imageUrl ? (
+              <img
+                src={imageUrl}
+                alt={course.imageName || 'Course'}
+                className="img-fluid w-100 course-img"
+              />
+            ) : (
+              <div className="placeholder-image">
+                Loading image...
+              </div>
+            )}
+            {/* rest of your code */}
+          </div>
+
+
+          <div className="p-4 text-white">
             <p><strong>Rating:</strong> {rating} ⭐ ({students.toLocaleString()} students)</p>
             <p><strong>Created by:</strong> {created_by}</p>
             <p><strong>Start Date:</strong> {start_date}</p>
@@ -88,23 +121,20 @@ function CourseDetails() {
 
           <div className="mt-5 d-flex gap-3 flex-column flex-md-row">
             <button
-              className={`btn ${isEnrolled ? 'btn-secondary' : 'btn-primary'} btn-lg flex-fill`}
+              className="btn btn-primary btn-lg flex-fill"
               onClick={handleEnroll}
-              disabled={isEnrolled}
             >
-              {isEnrolled ? 'Already Enrolled' : 'Enroll in Course'}
+              Enroll in Course
             </button>
-
-            {isLoggedIn && (
-              <button
-                className="btn btn-outline-success btn-lg flex-fill"
-                onClick={() => navigate(`/update-course/${id}`)}
-              >
-                ✏️ Edit Course
-              </button>
-            )}
+            {isAdmin && (<button
+              className="btn btn-outline-success btn-lg flex-fill"
+              onClick={() => navigate(`/update-course/${id}`)}
+            >
+              ✏️ Edit Course
+            </button>
+          )}
+            
           </div>
-
         </div>
       </div>
     </div>

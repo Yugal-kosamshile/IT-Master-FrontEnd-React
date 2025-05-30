@@ -9,7 +9,8 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 import './App.css';
-import './index.css'; 
+import './index.css';  
+import "../src/styles/Navbar.css"
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
 import CourseDetails from './components/CourseDetails';
@@ -17,11 +18,13 @@ import AddCourse from './components/AddCourse';
 import NotFound from './components/NotFound';
 import UpdateCourse from './components/UpdateCourse';
 import Courses from './pages/Courses';
+import { AppProvider } from './appContext/AppContext';
 
 
 function App() {
 
   return (
+    <AppProvider>
     <BrowserRouter>
     <div className="d-flex flex-column min-vh-100">
     <Navbar />
@@ -45,6 +48,7 @@ function App() {
         <Footer />
         </div>
     </BrowserRouter>
+    </AppProvider>
   );
 }
 

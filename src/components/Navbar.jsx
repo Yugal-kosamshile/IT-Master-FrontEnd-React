@@ -1,7 +1,9 @@
 import { useState, useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { clearDashboard, logout } from '../../store';
+
+import { Dropdown } from "bootstrap";
 
 function Navbar() {
   const [isNavOpen, setIsNavOpen] = useState(false);
@@ -9,6 +11,16 @@ function Navbar() {
   const [username, setUsername] = useState("");
   const navigate = useNavigate();
   const dispatch = useDispatch();
+  const isAuthenticated = useSelector((state) => state.auth.isLoggedIn);
+  const user = useSelector((state) => state.auth.user);
+
+
+  useEffect(() => {
+    if (!isAuthenticated) {
+      localStorage.removeItem("username");
+    }
+  }, [isAuthenticated]);
+  
 
   useEffect(() => {
     setIsAdmin(localStorage.getItem("isAdmin") === "true");
@@ -16,12 +28,20 @@ function Navbar() {
   }, []);
 
   const toggleNavbar = () => {
-    setIsNavOpen((prev) => !prev);
-    const navCollapse = document.getElementById("navbarNav");
-    if (navCollapse) {
-      navCollapse.classList.toggle("show", !isNavOpen);
-    }
-  };
+  
+      const dropdownElementList = document.querySelectorAll(".dropdown-toggle");
+      dropdownElementList.forEach((dropdown) => new Dropdown(dropdown));
+  
+      setIsNavOpen((prev) => !prev);
+      const navCollapse = document.getElementById("navbarNav");
+      if (navCollapse) {
+        if (isNavOpen) {
+          navCollapse.classList.remove("show");
+        } else {
+          navCollapse.classList.add("show");
+        }
+      }
+    };
 
   const handleLogout = () => {
     dispatch(logout());     
@@ -36,17 +56,13 @@ function Navbar() {
     navigate("/login");
   };
 
+  
   return (
     <div className="d-flex flex-column">
-      <nav className="navbar navbar-expand-lg navbar-light bg-light">
+      <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
         <div className="container">
-          <Link className="navbar-brand" to="/home">
-            <img
-              src="/topicon.png"
-              alt="IT-Master Logo"
-              height="50"
-              className="d-inline-block align-text-top"
-            />
+          <Link className="navbar-brand it-master-brand" to="/home">
+            <h5 className='it-master'>IT-MASTER</h5>
           </Link>
 
           <button
@@ -82,17 +98,35 @@ function Navbar() {
                 <Link className="nav-link" to="/contact">Contact</Link>
               </li>
 
-              {username ? (
-                <>
-                  <li className="nav-item">
-                    <span className="nav-link disabled">👤 {username}</span>
+              {isAuthenticated ? (
+                  <li className="nav-item dropdown">
+                    <button
+                      className="btn btn-outline-light dropdown-toggle"
+                      id="userDropdown"
+                      data-bs-toggle="dropdown"
+                      aria-expanded="false"
+                    >
+                      <i className="fa-solid fa-user"></i> 
+                     {username === "yugal" ? " Admin" : user?.username}
+
+                    </button>
+                    <ul className="dropdown-menu dropdown-menu-end" aria-labelledby="userDropdown">
+
+                      <li>
+                        <button className="dropdown-item text-danger" 
+                        // onClick={() => dispatch(logout())}
+                        
+                        onClick={handleLogout}
+                        
+                          >
+
+                          <i className="fa-solid fa-sign-out-alt"></i> Logout
+                        </button>
+                      </li>
+                    </ul>
                   </li>
-                  <li className="nav-item">
-                    <button className="btn btn-link nav-link" onClick={handleLogout}>Logout</button>
-                  </li>
-                </>
-              ) : (
-                <>
+                ) : (
+                 <>
                   <li className="nav-item">
                     <Link className="nav-link" to="/login">Login</Link>
                   </li>
@@ -100,7 +134,7 @@ function Navbar() {
                     <Link className="nav-link" to="/register">Register</Link>
                   </li>
                 </>
-              )}
+                )}
             </ul>
           </div>
         </div>

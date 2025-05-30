@@ -20,7 +20,7 @@ function Footer() {
                 <Link to="/about" className="footer-link">About Us</Link>
               </li>
               <li>
-                <Link to="/contact" className="footer-link">Contact Us</Link> 
+                <Link to="/contact" className="footer-link">Contact Us</Link>
               </li>
             </ul>
           </div>
