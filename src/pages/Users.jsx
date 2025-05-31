@@ -29,7 +29,6 @@ const Users = () => {
           <thead className="table-light">
             <tr>
               <th>Username</th>
-              <th>Course Title</th>
               <th>Mobile</th>
               <th>Email</th>
             </tr>
@@ -38,7 +37,6 @@ const Users = () => {
             {users.map((user, index) => (
               <tr key={index} className="text-center">
                 <td>{user.username}</td>
-                <td>{user.course?.title || 'N/A'}</td>
                 <td>{user.mobile}</td>
                 <td>{user.email}</td>
               </tr>

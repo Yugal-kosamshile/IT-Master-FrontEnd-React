@@ -120,12 +120,15 @@ const dashboardCourses = useSelector(state => state.dashboard);
           <p className="mt-4 text-dark">{short_description}</p>
 
           <div className="mt-5 d-flex gap-3 flex-column flex-md-row">
-            <button
-              className="btn btn-primary btn-lg flex-fill"
-              onClick={handleEnroll}
-            >
-              Enroll in Course
-            </button>
+            {!isEnrolled ? (
+              <button className="btn btn-primary btn-lg flex-fill" onClick={handleEnroll}>
+                Enroll in Course
+              </button>
+            ) : (
+              <button className="btn btn-secondary btn-lg flex-fill" disabled>
+                Already Enrolled
+              </button>
+            )}
             {isAdmin && (<button
               className="btn btn-outline-success btn-lg flex-fill"
               onClick={() => navigate(`/update-course/${id}`)}
