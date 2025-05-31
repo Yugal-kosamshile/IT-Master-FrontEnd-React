@@ -1,6 +1,8 @@
+// src/components/UpdateCourse.jsx
 import { useState, useEffect } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import axios from "axios";
+import "../styles/UpdateCourse.css"; // optional custom styles
 
 const UpdateCourse = () => {
   const { id } = useParams();
@@ -81,13 +83,14 @@ const UpdateCourse = () => {
   };
 
   return (
-    <div className="update-course-container">
-      <div className="custom-container my-5">
-        <div className="card course-card shadow-lg">
+    <div className="update-course-page py-5">
+      <div className="container update-course-container">
+        <div className="card update-course-card shadow-lg">
           <div className="card-body">
-            <h2 className="card-title text-center mb-4 text-success">✏️ Update Course</h2>
-            <form onSubmit={handleSubmit}>
-              <div className="mb-3">
+            <h2 className="text-center text-success update-course-title mb-4">✏️ Update Course</h2>
+            <form onSubmit={handleSubmit} className="update-course-form">
+
+              <div className="mb-3 update-course-input">
                 <label className="form-label">Course Title</label>
                 <input
                   type="text"
@@ -100,7 +103,7 @@ const UpdateCourse = () => {
                 />
               </div>
 
-              <div className="mb-3">
+              <div className="mb-3 update-course-input">
                 <label className="form-label">Subtitle</label>
                 <input
                   type="text"
@@ -113,7 +116,7 @@ const UpdateCourse = () => {
                 />
               </div>
 
-              <div className="mb-3">
+              <div className="mb-3 update-course-input">
                 <label className="form-label">Short Description</label>
                 <textarea
                   className="form-control"
@@ -126,8 +129,8 @@ const UpdateCourse = () => {
                 ></textarea>
               </div>
 
-              <div className="row mb-3">
-                <div className="col-md-6">
+              <div className="row">
+                <div className="col-md-6 mb-3 update-course-input">
                   <label className="form-label">Created By</label>
                   <input
                     type="text"
@@ -139,7 +142,7 @@ const UpdateCourse = () => {
                     required
                   />
                 </div>
-                <div className="col-md-6">
+                <div className="col-md-6 mb-3 update-course-input">
                   <label className="form-label">Language</label>
                   <input
                     type="text"
@@ -153,8 +156,8 @@ const UpdateCourse = () => {
                 </div>
               </div>
 
-              <div className="row mb-3">
-                <div className="col-md-6">
+              <div className="row">
+                <div className="col-md-6 mb-3 update-course-input">
                   <label className="form-label">Rating</label>
                   <input
                     type="number"
@@ -167,7 +170,7 @@ const UpdateCourse = () => {
                     required
                   />
                 </div>
-                <div className="col-md-6">
+                <div className="col-md-6 mb-3 update-course-input">
                   <label className="form-label">Enrolled Students</label>
                   <input
                     type="number"
@@ -181,8 +184,8 @@ const UpdateCourse = () => {
                 </div>
               </div>
 
-              <div className="row mb-4">
-                <div className="col-md-6">
+              <div className="row mb-3">
+                <div className="col-md-6 update-course-input">
                   <label className="form-label">Start Date</label>
                   <input
                     type="date"
@@ -193,7 +196,7 @@ const UpdateCourse = () => {
                     required
                   />
                 </div>
-                <div className="col-md-6">
+                <div className="col-md-6 update-course-input">
                   <label className="form-label">End Date</label>
                   <input
                     type="date"
@@ -206,33 +209,22 @@ const UpdateCourse = () => {
                 </div>
               </div>
 
-              <div className="mb-3">
-                <label className="form-label">Course Image</label>
-                <br />
+              <div className="mb-3 update-course-image">
+                <label className="form-label">Course Image</label><br />
                 {image ? (
                   <img
                     src={URL.createObjectURL(image)}
                     alt="Selected"
-                    style={{
-                      width: "60%",
-                      maxHeight: "180px",
-                      objectFit: "cover",
-                      marginBottom: "0.5rem",
-                    }}
+                    className="img-fluid mb-2 update-course-image-preview"
                   />
                 ) : course.imageName ? (
                   <img
                     src={`http://localhost:8082/api/course/${id}/image`}
                     alt="Existing"
-                    style={{
-                      width: "60%",
-                      maxHeight: "180px",
-                      objectFit: "cover",
-                      marginBottom: "0.5rem",
-                    }}
+                    className="img-fluid mb-2 update-course-image-preview"
                   />
                 ) : (
-                  <p>No image available</p>
+                  <p className="text-muted">No image available</p>
                 )}
                 <input
                   className="form-control"
@@ -242,7 +234,7 @@ const UpdateCourse = () => {
                 />
               </div>
 
-              <button type="submit" className="btn btn-success w-100 fw-bold">
+              <button type="submit" className="btn btn-success w-100 fw-bold update-course-submit-btn">
                 Update Course
               </button>
             </form>

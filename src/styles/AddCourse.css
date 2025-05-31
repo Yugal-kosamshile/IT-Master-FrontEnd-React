@@ -1,103 +1,34 @@
 .add-course-wrapper {
-    background: linear-gradient(135deg, #0f0f2d, #1a1a40);
-    min-height: 100vh;
-    color: white;
+  background-color: #f8f9fa;
 }
-
-.course-card {
-    background: rgba(20, 20, 50, 0.95);
-    border: none;
-    border-radius: 16px;
-    padding: 2rem;
-}
-
-.course-card .form-control {
-    background-color: rgba(255, 255, 255, 0.05);
-    color: white;
-    border: 1px solid #444;
-}
-
-.course-card .form-control:focus {
-    background-color: rgba(255, 255, 255, 0.1);
-    border-color: #00ff88;
-    box-shadow: 0 0 5px #00ff88;
-}
-
-.btn-success {
-    background-image: linear-gradient(45deg, #00c67a, #00ff88);
-    border: none;
-    font-weight: bold;
-    transition: all 0.3s ease;
-}
-
-.btn-success:hover {
-    background-image: linear-gradient(45deg, #00ff88, #00c67a);
-    transform: scale(1.02);
-}
-
-.alert {
-    background-color: rgba(255, 255, 255, 0.1);
-    color: white;
-    border-radius: 8px;
-}
-
-.alert-success {
-    border-left: 5px solid #00ff88;
-}
-
-.alert-danger {
-    border-left: 5px solid #ff4d4f;
-}
-
-/* //================================= */
-
-/* add course .jsx */
 
 .add-course-container {
-    background: #f4f7ff;
-    width: 100vw;
+  max-width: 800px;
+  margin: 0 auto;
 }
 
-.custom-container {
-    max-width: 700px;
-    margin: auto;
+.add-course-card {
+  border-radius: 12px;
+  background-color: #ffffff;
 }
 
-.course-card {
-    border-radius: 1rem;
-    padding: 2rem;
-    transition: box-shadow 0.3s ease;
-    border: 1px solid #c3e6cb;
+.add-course-title {
+  font-size: 28px;
+  font-weight: 600;
+  color: #198754;
 }
 
-.course-card:hover {
-    box-shadow: 0 0.75rem 1.5rem rgba(40, 167, 69, 0.2);
+.add-course-form .form-control {
+  border-radius: 8px;
 }
 
-input,
-textarea {
-    border-radius: 0.5rem;
-    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+.add-course-image-preview {
+  width: 100%;
+  max-height: 180px;
+  object-fit: cover;
+  border-radius: 8px;
 }
 
-input:focus,
-textarea:focus{
-    border-color: #28a745;
-    box-shadow: 0 0 0 0.2rem rgba(40, 167, 69, 0.25);
-}
-
-input:hover,
-textarea:hover {
-    border-color: #28a745;
-    box-shadow: 0 0 0 0.2rem #59fc7f65;
-}
-.btn-success {
-    color : #000;
-    background-color: #28a745;
-    border-color: #28a745;
-}
-
-.btn-success:hover {
-    background-color: #218838;
-    border-color: #1e7e34;
+.add-course-submit-btn {
+  border-radius: 8px;
 }

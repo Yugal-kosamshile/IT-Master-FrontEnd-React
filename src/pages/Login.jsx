@@ -50,6 +50,7 @@ function Login() {
   };
 
   return (
+  <div className="login-body">
     <div className="login-container">
       <div className="login-card">
         <h2 className="login-title">Sign in</h2>
@@ -88,6 +89,7 @@ function Login() {
           <Link to="/register" className="login-link">Register</Link>
         </div>
       </div>
+    </div>
     </div>
   );
 }

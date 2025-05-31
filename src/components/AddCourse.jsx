@@ -22,10 +22,7 @@ function AddCourse() {
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
-    setCourse((prev) => ({
-      ...prev,
-      [name]: value
-    }));
+    setCourse((prev) => ({ ...prev, [name]: value }));
   };
 
   const handleImageChange = (e) => {
@@ -36,39 +33,27 @@ function AddCourse() {
     e.preventDefault();
     const formData = new FormData();
     formData.append("imageFile", image);
-    formData.append(
-      "course",
-      new Blob([JSON.stringify(course)], { type: "application/json" })
-    );
+    formData.append("course", new Blob([JSON.stringify(course)], { type: "application/json" }));
 
     try {
       await axios.post('http://localhost:8082/api/add-course', formData, {
         headers: { 'Content-Type': 'multipart/form-data' }
-      })
-        .then((response) => {
-          console.log("Course added successfully:", response.data);
-          alert("✅ Course added successfully");
-        })
-        .catch((error) => {
-          console.error("Error adding course:", error);
-          alert("❌ Error adding course");
-        });
-
+      });
+      alert("✅ Course added successfully");
+      navigate("/courses");
     } catch (error) {
-      console.error(error);
+      console.error("Error adding course:", error);
       setMessage('❌ Error adding course: ' + error.message);
     }
-
-    navigate("/courses");
   };
 
   return (
     <div className="add-course-wrapper py-5">
-      <div className="custom-container my-4">
-        <div className="card course-card shadow-lg text-white">
+      <div className="add-course-container">
+        <div className="card add-course-card shadow-lg">
           <div className="card-body">
-            <h2 className="card-title text-center mb-4 text-success">🌿 Add New Course</h2>
-            <form onSubmit={handleSubmit}>
+            <h2 className="text-center add-course-title mb-4">🌿 Add New Course</h2>
+            <form onSubmit={handleSubmit} className="add-course-form">
               <div className="mb-3">
                 <label className="form-label">Course Title</label>
                 <input type="text" className="form-control" name="title" value={course.title} onChange={handleInputChange} required />
@@ -122,7 +107,7 @@ function AddCourse() {
                 <input className="form-control" type="file" onChange={handleImageChange} />
               </div>
 
-              <button type="submit" className="btn btn-success w-100 fw-bold">Add Course</button>
+              <button type="submit" className="btn btn-success w-100 fw-bold add-course-submit-btn">Add Course</button>
             </form>
 
             {message && (

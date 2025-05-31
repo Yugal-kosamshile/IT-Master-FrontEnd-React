@@ -71,7 +71,7 @@ function Register() {
             <div className="mb-3">
               <input
                 type="text"
-                className="form-control"
+                className="register-form-control"
                 name="name"
                 value={form.name}
                 onChange={handleChange}
@@ -82,7 +82,7 @@ function Register() {
             <div className="mb-3">
               <input
                 type="tel"
-                className="form-control"
+                className="register-form-control"
                 name="mobile"
                 value={form.mobile}
                 onChange={handleChange}
@@ -93,7 +93,7 @@ function Register() {
             <div className="mb-3">
               <input
                 type="email"
-                className="form-control"
+                className="register-form-control"
                 name="email"
                 value={form.email}
                 onChange={handleChange}
@@ -104,7 +104,7 @@ function Register() {
             <div className="mb-3">
               <input
                 type="password"
-                className="form-control"
+                className="register-form-control"
                 name="password"
                 value={form.password}
                 onChange={handleChange}
@@ -115,7 +115,7 @@ function Register() {
             <div className="mb-3">
               <input
                 type="password"
-                className="form-control"
+                className="register-form-control"
                 name="confirmPassword"
                 value={form.confirmPassword}
                 onChange={handleChange}
@@ -125,7 +125,7 @@ function Register() {
             </div>
             <div className="form-check mb-4">
               <input className="form-check-input" type="checkbox" required />
-              <label className="form-check-label ms-2">
+              <label className="form-check-box ms-2">
                 I accept all terms & conditions
               </label>
             </div>
@@ -135,7 +135,7 @@ function Register() {
           </form>
           <p className="mt-3 text-center">
             Already have an account?{" "}
-            <a href="/login" className="text-success fw-bold text-decoration-none">
+            <a href="/login" className=" anchor text-success fw-bold text-decoration-none">
               Login now
             </a>
           </p>

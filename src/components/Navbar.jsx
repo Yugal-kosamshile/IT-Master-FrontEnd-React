@@ -88,9 +88,14 @@ function Navbar() {
                 <Link className="nav-link" to="/dashboard">Dashboard</Link>
               </li>
               {isAdmin && (
+                <>
+                 <li className="nav-item">
+                  <Link className="nav-link" to="/users">Users</Link>
+                </li>
                 <li className="nav-item">
                   <Link className="nav-link" to="/add-course">Add Course</Link>
                 </li>
+                </>
               )}
               <li className="nav-item">
                 <Link className="nav-link" to="/about">About Us</Link>

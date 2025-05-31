@@ -18,6 +18,7 @@ import NotFound from './components/NotFound';
 import UpdateCourse from './components/UpdateCourse';
 import Courses from './pages/Courses';
 import { AppProvider } from './appContext/AppContext';
+import Users from './pages/Users';
 
 
 function App() {
@@ -34,6 +35,7 @@ function App() {
             <Route path="/coursedetails" element={<CourseDetails/>}/>
             <Route path="/coursedetails/:id" element={<CourseDetails />} />
             <Route path="/add-course" element={<AddCourse/>} />
+            <Route path="/users" element={<Users/>} />
             <Route path="/dashboard" element={<Dashboard />}/> 
             <Route path="/courses" element={<Courses />} />
             <Route path="/about" element={<AboutUs />} />

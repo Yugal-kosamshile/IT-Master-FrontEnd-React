@@ -1,7 +1,7 @@
 /* ContactUs.css */
-body {
+.contact-body {
   font-family: 'Poppins', sans-serif;
-  background-color: #000; /* optional for page bg */
+  background-color: #000; 
   color: #00ff99;
 }
 
@@ -26,7 +26,7 @@ body {
 }
 
 .left-panel,
-.right-panel {
+.contact-right-panel {
   flex: 1;
   min-width: 300px;
   padding: 2rem;
@@ -43,13 +43,13 @@ body {
   color: #00ccff;
 }
 
-.left-panel p {
+.contact-para {
   color: #00ffaa;
   font-size: 0.9rem;
   margin-bottom: 1.5rem;
 }
 
-.links a {
+.contact-links a {
   display: flex;
   align-items: center;
   color: #00ccff;
@@ -58,20 +58,20 @@ body {
   transition: color 0.3s;
 }
 
-.links a:hover {
+.contact-links a:hover {
   color: #00ff99;
 }
 
-.links a i {
+.contact-links a i {
   margin-right: 0.5rem;
   font-size: 1.2rem;
 }
 
-.socials p {
+.contact-socials p {
   margin-bottom: 0.5rem;
 }
 
-.icons i {
+.contact-icons i {
   margin-right: 1rem;
   font-size: 1.2rem;
   color: #00ffaa;
@@ -79,11 +79,11 @@ body {
   transition: color 0.3s;
 }
 
-.icons i:hover {
+.contact-icons i:hover {
   color: #00ffcc;
 }
 
-.right-panel {
+.contact-right-panel {
   background-color: rgba(0, 0, 0, 0.6);
   display: flex;
   flex-direction: column;
@@ -96,8 +96,8 @@ body {
   margin-bottom: 1rem;
 }
 
-input,
-textarea {
+.contact-right-panel input,
+.contact-right-panel textarea {
   width: 100%;
   background-color: #001f1f;
   border: 1px solid #00ccff;
@@ -109,20 +109,20 @@ textarea {
   transition: all 0.3s ease;
 }
 
-input:hover,
-textarea:hover {
+.contact-right-panel input:hover,
+.contact-right-panel textarea:hover {
   background-color: #002b2b;
   border: 1px solid #00ffcc;
   box-shadow: 0 0 6px rgba(0, 255, 153, 0.4);
 }
 
-textarea {
+.contact-right-panel textarea {
   resize: none;
   height: 120px;
   margin-bottom: 1rem;
 }
 
-button {
+.contact-right-panel button {
   background: linear-gradient(to right, #00ccff, #00ff99);
   color: #000;
   padding: 0.75rem;
@@ -133,7 +133,7 @@ button {
   transition: background 0.3s;
 }
 
-button:hover {
+.contact-right-panel button:hover {
   background: linear-gradient(to right, #00ff99, #00ccff);
 }
 

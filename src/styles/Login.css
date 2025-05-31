@@ -1,5 +1,5 @@
 /* Login.css */
-body {
+.login-body {
   margin: 0;
   padding: 0;
   font-family: 'Segoe UI', sans-serif;
@@ -58,8 +58,7 @@ body {
   color: #008c8c;
 }
 
-input,
-textarea {
+.login-input{
   width: 100%;
   background-color: #001f1f;
   border: 1px solid #00ccff;
@@ -71,8 +70,7 @@ textarea {
   transition: all 0.3s ease;
 }
 
-input:hover,
-textarea:hover {
+.login-input:hover {
   background-color: #002b2b;
   border: 1px solid #00ffcc;
   box-shadow: 0 0 6px rgba(0, 255, 153, 0.4);

@@ -1,0 +1,30 @@
+.update-course-page {
+  background-color: #f8f9fa;
+}
+
+.update-course-container {
+  max-width: 800px;
+}
+
+.update-course-card {
+  border-radius: 12px;
+}
+
+.update-course-title {
+  font-size: 28px;
+}
+
+.update-course-form .form-control {
+  border-radius: 8px;
+}
+
+.update-course-image-preview {
+  width: 100%;
+  max-height: 180px;
+  object-fit: cover;
+  border-radius: 8px;
+}
+
+.update-course-submit-btn {
+  border-radius: 8px;
+}
