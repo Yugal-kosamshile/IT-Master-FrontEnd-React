@@ -19,10 +19,10 @@ function Login() {
     e.preventDefault();
     const { username, password } = form;
 
-    if (username === "yugal" && password === "yugal@123") {
-      const user = { username: "yugal", isAdmin: true };
+    if (username === "Yugalk" && password === "Yugalk#123") {
+      const user = { username: "Yugalk", isAdmin: true };
       dispatch(loginSuccess(user));
-      localStorage.setItem("username", "yugal");
+      localStorage.setItem("username", "Yugalk");
       localStorage.setItem("isAdmin", "true");
       setMessage("Admin login successful");
       navigate("/home");
