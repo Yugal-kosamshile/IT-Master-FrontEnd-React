@@ -68,7 +68,7 @@ const UpdateCourse = () => {
         formData.append("imageFile", image);
       }
 
-      await axios.put(`http://localhost:8082/api/update/${id}`, formData, {
+      await axios.put(`https://backend-rest-faqo.onrender.com/api/update/${id}`, formData, {
         headers: {
           "Content-Type": "multipart/form-data",
         },
@@ -219,7 +219,7 @@ const UpdateCourse = () => {
                   />
                 ) : course.imageName ? (
                   <img
-                    src={`http://localhost:8082/api/course/${id}/image`}
+                    src={`https://backend-rest-faqo.onrender.com/api/course/${id}/image`}
                     alt="Existing"
                     className="img-fluid mb-2 update-course-image-preview"
                   />
