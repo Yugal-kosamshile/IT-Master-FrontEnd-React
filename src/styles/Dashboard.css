@@ -1,0 +1,36 @@
+.dashboard-container {
+  animation: fadeIn 0.5s ease-in;
+}
+
+.dashboard-card {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  border-radius: 1rem;
+  border: 1px solid #d4edda;
+}
+
+.dashboard-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 20px rgba(0, 128, 0, 0.2);
+}
+
+.card-title {
+  font-size: 1.25rem;
+  font-weight: 600;
+}
+
+.btn-remove {
+  transition: all 0.2s ease-in-out;
+  font-weight: 500;
+  border-radius: 0.75rem;
+}
+
+.btn-remove:hover {
+  background-color: #c82333;
+  transform: scale(1.05);
+  color: white;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}

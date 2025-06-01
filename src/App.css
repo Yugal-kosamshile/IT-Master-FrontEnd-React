@@ -1,0 +1,206 @@
+/*home page hero style*/
+.home-hero {
+ 
+  height: 80vh;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+}
+.home-hero p{
+  font-weight: 400;
+  font-size: 1.3rem;
+}
+.video-bg-home {
+  object-fit: cover;
+  width: 80%;
+  height: 80%;
+  z-index: 0;
+}
+
+.home-hero .potent {
+  color: orange;
+}
+.hr-line{
+  width: 50%;
+  height: 4px;
+  background-color: orange;
+  border: none;
+  border-radius: 2px;
+  opacity: 0.9;
+}
+
+@keyframes growLine {
+  from {
+    width: 0;
+    opacity: 0;
+  }
+  to {
+    width: 200px;
+    opacity: 0.9;
+  }
+}
+
+.hr-line {
+  animation: growLine 0.8s ease-out forwards;
+}
+
+@keyframes dropIn {
+  0% {
+    transform: translateY(-100px);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+.drop-in {
+  animation: dropIn 1s ease-out;
+}
+
+/*Course card style*/
+.card-title {
+  font-size: 1.2rem;
+  font-weight: 500;
+}
+.course-carousel .slick-slide {
+  display: flex;
+  justify-content: center;
+}
+
+.card-text {
+  font-size: 0.95rem;
+  color: #333;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+}
+
+/* Button hover effect */
+.btn-outline-dark:hover {
+  background-color: black;
+  color: #fff;
+  border-color:rgb(55, 55, 102);
+  transition: all 0.3s ease;
+}
+
+/*style for all the headings*/
+.heading{
+  font-size: 3rem;
+  font-weight: bold;
+  color: #333;
+  font-family: serif, 'Times New Roman', Times; 
+  margin-bottom: 20px;
+}
+/*style for benefits sections*/
+.benefit-section {
+  background-color: rgb(45, 45, 83);
+  background-size: cover;
+  width: 100%;
+  margin: 0;
+  padding: 3rem 1rem; /* Use padding instead of fixed height */
+}
+
+.benefit-section .heading {
+  color: white;
+}
+
+.benefit-section .benefits {
+  background: linear-gradient(180deg,white, rgb(248, 217, 177));
+  color: #272727;
+  border-radius: 20px;
+  padding: 2rem 1rem;
+  width: 100%;
+}
+
+/* Responsive typography and layout */
+@media (max-width: 768px) {
+  .benefit-section .benefits {
+    padding: 1.5rem 1rem;
+  }
+
+  .benefits i {
+    font-size: 2rem !important;
+  }
+
+  .benefits h5 {
+    font-size: 1rem;
+  }
+
+  .benefits p {
+    font-size: 0.875rem;
+  }
+}
+
+/*style for the advantages section*/
+.advantages {
+  background: linear-gradient(180deg, white, rgb(248, 217, 177));
+  color: #272727;
+  border-radius: 20px;
+  padding: 2rem 1rem;
+}
+
+/*style for the enrollment section*/
+.enrollment {
+  color: rgb(30, 28, 28);
+}
+.enrollment-section {
+  background-color: rgb(235, 235, 235);
+  background-size: cover;
+  width: 100%;
+  margin: 0;
+  padding: 3rem 1rem; /* Use padding instead of fixed height */
+}
+.enrollment-heading { 
+  font-weight: bold;
+  font-size: 2.5rem;
+  color: #333;
+  font-family: serif, 'Times New Roman', Times; 
+  margin-bottom: 20px;
+}
+.input-field {
+  border: 1px solid #a5a4a4;
+}
+
+.card-title {
+  font-size: 1.25rem;
+  font-weight: 600;
+}
+
+.card:hover {
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  transition: 0.3s ease;
+}
+
+.form-check-label {
+  cursor: pointer;
+}
+
+
+
+/* coure details.jsx */
+.course-details-card {
+  max-width: 1000px;
+  margin: auto;
+  border: 1px solid #c3e6cb;
+}
+
+
+.course-img {
+  height: 250px;
+  object-fit: cover;
+  border-bottom: 1px solid #c3e6cb;
+}
+
+.course-details-card p {
+  margin-bottom: 0.75rem;
+  color: #fff;
+}
+
+ .course-details-card h2, h4 {
+  margin-bottom: 1rem;
+}

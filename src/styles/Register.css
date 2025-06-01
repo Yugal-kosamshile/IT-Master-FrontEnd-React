@@ -1,0 +1,118 @@
+/* General Layout */
+.register-wrapper {
+  background-color: #000; /* pure black */
+  color: #00ff99; /* neon green text */
+  font-family: 'Poppins', sans-serif;
+}
+
+.register-box {
+  background-color: transparent;
+  width: 95%;
+  max-width: 1000px;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 0 20px rgba(0, 255, 153, 0.15);
+}
+
+/* Left - Form Section */
+.form-section {
+  background-color: rgba(0, 0, 0, 0.7);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  border-top-left-radius: 16px;
+  border-bottom-left-radius: 16px;
+  backdrop-filter: blur(10px);
+}
+
+.form-section h3 {
+  color: #00ccff; /* bright blue */
+  font-size: 28px;
+  font-weight: 700;
+}
+
+/* Input Fields */
+.register-form-control {
+  background-color: #001f1f !important;
+  border: none;
+  border-radius: 12px;
+  padding: 14px 18px;
+  color: #fff;
+  font-size: 16px;
+  transition: all 0.3s ease;
+}
+
+.register-form-control::placeholder {
+  color: #cbd5e1 !important;
+
+}
+
+.register-form-control:hover,
+.register-form-control:focus {
+  background-color: #003333 !important;
+  border: 1px solid #00cc99;
+  outline: none;
+  box-shadow: 0 0 0 2px rgba(0, 204, 153, 0.3);
+}
+
+/* Button */
+.register-btn {
+  background: linear-gradient(to right, #00ccff, #00ff99);
+  border: none;
+  padding: 14px;
+  border-radius: 12px;
+  font-weight: 600;
+  font-size: 18px;
+  color: #000;
+  transition: background 0.3s ease;
+}
+
+.register-btn:hover {
+  background: linear-gradient(to right, #00ff99, #00ccff);
+}
+
+/* Checkbox */
+.form-check-input {
+  background-color: #001f1f;
+  border: 1px solid #00ccff;
+}
+
+.form-check-box {
+  color: #00ffcc;
+}
+
+/* Link */
+.anchor.text-success {
+  color: #00ccff !important;
+}
+
+.anchor.text-success:hover {
+  text-decoration: underline;
+}
+
+/* Right - Quote Section */
+.slogan-section {
+  background: linear-gradient(to bottom right, #000, #002b36);
+  padding: 60px 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-top-right-radius: 16px;
+  border-bottom-right-radius: 16px;
+}
+
+.slogan-text {
+  font-size: 24px;
+  font-weight: 600;
+  text-align: center;
+  line-height: 1.5;
+  color: #00ffcc;
+}
+
+/* Alert */
+.alert {
+  background-color: #00ccff;
+  color: #000;
+  border: none;
+  border-radius: 8px;
+}
