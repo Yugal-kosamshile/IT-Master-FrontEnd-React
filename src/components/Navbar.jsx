@@ -113,7 +113,7 @@ function Navbar() {
                       aria-expanded="false"
                     >
                       <i className="fa-solid fa-user"></i> 
-                     {username === "yugal" ? " Admin" : user?.username}
+                     {username === "Yugalk" ? " Admin" : user?.username}
 
                     </button>
                     <ul className="dropdown-menu dropdown-menu-end" aria-labelledby="userDropdown">
