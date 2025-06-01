@@ -216,12 +216,6 @@ ReactDOM.createRoot(document.getElementById('root')).render(
 
 For questions or support, please contact [G-Mail](yugalkosamshile2002@gmail.com)
 
----
-
-## 📜 License
-
-Distributed under the [MIT License](LICENSE).
-
 ```
 
 ---
