@@ -26,12 +26,12 @@ const UpdateCourse = () => {
   useEffect(() => {
     const fetchCourse = async () => {
       try {
-        const res = await axios.get(`http://localhost:8082/api/get-course/${id}`);
+        const res = await axios.get(`https://backend-rest-faqo.onrender.com/api/get-course/${id}`);
         setCourse(res.data);
         setUpdateCourse(res.data);
 
         if (res.data.imageName) {
-          const resImage = await axios.get(`http://localhost:8082/api/course/${id}/image`, {
+          const resImage = await axios.get(`https://backend-rest-faqo.onrender.com/api/course/${id}/image`, {
             responseType: "blob",
           });
           const imageFile = await convertUrlToFile(resImage.data, res.data.imageName);

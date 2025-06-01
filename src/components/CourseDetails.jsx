@@ -21,7 +21,7 @@ const dashboardCourses = useSelector(state => state.dashboard);
   useEffect(() => {
     const fetchCourse = async () => {
       try {
-        const res = await axios.get(`http://localhost:8082/api/get-course/${id}`);
+        const res = await axios.get(`https://backend-rest-faqo.onrender.com/api/get-course/${id}`);
         setCourse(res.data);
         if (res.data.imageName) {
           fetchImage(res.data.imageName);
@@ -34,7 +34,7 @@ const dashboardCourses = useSelector(state => state.dashboard);
 
     const fetchImage = async (imageName) => {
       try {
-        const response = await axios.get(`http://localhost:8082/api/course/${id}/image`, {
+        const response = await axios.get(`https://backend-rest-faqo.onrender.com/api/course/${id}/image`, {
           responseType: 'blob',
         });
         setImageUrl(URL.createObjectURL(response.data));

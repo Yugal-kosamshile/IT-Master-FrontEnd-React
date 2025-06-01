@@ -9,7 +9,7 @@ function Courses() {
   const [errorMsg, setErrorMsg] = useState('');
 
   useEffect(() => {
-    axios.get("http://localhost:8082/api/get-courses")
+    axios.get("https://backend-rest-faqo.onrender.com/api/get-courses")
       .then((res) => setCourses(res.data))
       .catch((err) => console.error("Error fetching courses:", err));
   }, []);

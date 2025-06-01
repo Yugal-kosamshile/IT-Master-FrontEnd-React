@@ -35,7 +35,7 @@ function Register() {
     };
 
     try {
-      const res = await axios.post("http://localhost:8082/api/register", requestData, {
+      const res = await axios.post("https://backend-rest-faqo.onrender.com/api/register", requestData, {
         headers: {
           "Content-Type": "application/json"
         }

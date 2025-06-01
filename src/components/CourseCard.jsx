@@ -11,7 +11,7 @@ function CourseCard({ course, onRemove }) {
   useEffect(() => {
     const fetchImage = async () => {
       try {
-        const response = await axios.get(`http://localhost:8082/api/course/${course.id}/image`, {
+        const response = await axios.get(`https://backend-rest-faqo.onrender.com/api/course/${course.id}/image`, {
           responseType: 'blob',
         });
         const url = URL.createObjectURL(response.data);
@@ -30,7 +30,7 @@ function CourseCard({ course, onRemove }) {
     if (!confirm) return;
 
     try {
-      await axios.delete(`http://localhost:8082/api/delete/${course.id}`);
+      await axios.delete(`https://backend-rest-faqo.onrender.com/api/delete/${course.id}`);
       alert("Course removed successfully!");
       if (onRemove) onRemove(course.id);
     } catch (error) {

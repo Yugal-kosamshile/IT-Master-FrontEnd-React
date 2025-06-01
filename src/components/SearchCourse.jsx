@@ -15,7 +15,7 @@ const SearchCourse = ({ onResults }) => {
     }
 
     try {
-      const res = await axios.get('http://localhost:8082/api/get-course', {
+      const res = await axios.get('https://backend-rest-faqo.onrender.com/api/get-course', {
         params: { title: searchTerm }
       });
 

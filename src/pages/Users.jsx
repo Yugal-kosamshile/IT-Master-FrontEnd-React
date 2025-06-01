@@ -7,7 +7,7 @@ const Users = () => {
   const [error, setError] = useState(null);
 
   useEffect(() => {
-    axios.get('http://localhost:8082/api/get-users')
+    axios.get('https://backend-rest-faqo.onrender.com/api/get-users')
       .then(response => {
         setUsers(response.data);
         setLoading(false);

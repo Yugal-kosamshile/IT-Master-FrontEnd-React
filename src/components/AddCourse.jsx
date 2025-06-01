@@ -36,7 +36,7 @@ function AddCourse() {
     formData.append("course", new Blob([JSON.stringify(course)], { type: "application/json" }));
 
     try {
-      await axios.post('http://localhost:8082/api/add-course', formData, {
+      await axios.post('https://backend-rest-faqo.onrender.com/api/add-course', formData, {
         headers: { 'Content-Type': 'multipart/form-data' }
       });
       alert("✅ Course added successfully");
