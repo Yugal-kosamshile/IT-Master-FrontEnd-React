@@ -14,11 +14,11 @@ import Navbar from './components/Navbar';
 import Footer from './components/Footer';
 import CourseDetails from './components/CourseDetails';
 import AddCourse from './components/AddCourse';
-import NotFound from './components/NotFound';
 import UpdateCourse from './components/UpdateCourse';
 import Courses from './pages/Courses';
 import { AppProvider } from './appContext/AppContext';
 import Users from './pages/Users';
+import NotFoundPage from './components/NotFound';
 
 
 function App() {
@@ -42,7 +42,7 @@ function App() {
             <Route path="/contact" element={<ContactUs/>}/>
             <Route path="/login" element={<Login />} />
             <Route path="/register" element={<Register />} />
-            <Route path="*" element={<NotFound/>} />
+            <Route path="*" element={<NotFoundPage />} />
             <Route path="/update-course/:id" element={<UpdateCourse/>} />
           </Routes>
 

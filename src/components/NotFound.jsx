@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import { useNavigate } from "react-router-dom"; 
 
-function NotFound() {
+function NotFoundPage() {
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -9,7 +9,7 @@ function NotFound() {
       navigate("/home");
     }, 5000);
 
-    return () => clearTimeout(timeout); // Clean up on unmount
+    return () => clearTimeout(timeout); 
   }, [navigate]);
 
   return (
@@ -24,4 +24,4 @@ function NotFound() {
   );
 }
 
-export default NotFound;
+export default NotFoundPage;
