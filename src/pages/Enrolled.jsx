@@ -1,13 +1,14 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
+import API from '../axios';
 
 function MyCourses() {
   const [courses, setCourses] = useState([]);
 
   const fetchMyCourses = async () => {
     try {
-      const res = await axios.get('https://backend-rest-faqo.onrender.com/api/my-courses');
+      const res = await API.get('/my-courses');
       setCourses(res.data);
     } catch (err) {
       console.error('Error fetching enrolled courses:', err);
@@ -20,7 +21,7 @@ function MyCourses() {
 
   const handleRemove = async (id) => {
     try {
-      await axios.delete(`https://backend-rest-faqo.onrender.com/api/my-courses/${id}`);
+      await API.delete(`/my-courses/${id}`);
       setCourses(prev => prev.filter(course => course.id !== id));
     } catch (err) {
       console.error('Error removing course:', err);

@@ -2,6 +2,7 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import CourseCard from "../components/CourseCard";
 import SearchCourse from "../components/SearchCourse";
+import API from "../axios";
 
 function Courses() {
   const [courses, setCourses] = useState([]);
@@ -9,7 +10,7 @@ function Courses() {
   const [errorMsg, setErrorMsg] = useState('');
 
   useEffect(() => {
-    axios.get("https://backend-rest-faqo.onrender.com/api/get-courses")
+    API.get("/get-courses")
       .then((res) => setCourses(res.data))
       .catch((err) => console.error("Error fetching courses:", err));
   }, []);

@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import "../styles/Register.css";
+import API from "../axios";
 
 function Register() {
   const [form, setForm] = useState({
@@ -35,7 +36,7 @@ function Register() {
     };
 
     try {
-      const res = await axios.post("https://backend-rest-faqo.onrender.com/api/register", requestData, {
+      const res = await API.post("/register", requestData, {
         headers: {
           "Content-Type": "application/json"
         }

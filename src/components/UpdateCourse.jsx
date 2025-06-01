@@ -3,6 +3,7 @@ import { useState, useEffect } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import axios from "axios";
 import "../styles/UpdateCourse.css"; // optional custom styles
+import API from "../axios";
 
 const UpdateCourse = () => {
   const { id } = useParams();
@@ -26,12 +27,12 @@ const UpdateCourse = () => {
   useEffect(() => {
     const fetchCourse = async () => {
       try {
-        const res = await axios.get(`https://backend-rest-faqo.onrender.com/api/get-course/${id}`);
+        const res = await API.get(`/get-course/${id}`);
         setCourse(res.data);
         setUpdateCourse(res.data);
 
         if (res.data.imageName) {
-          const resImage = await axios.get(`https://backend-rest-faqo.onrender.com/api/course/${id}/image`, {
+          const resImage = await API.get(`/course/${id}/image`, {
             responseType: "blob",
           });
           const imageFile = await convertUrlToFile(resImage.data, res.data.imageName);
@@ -68,7 +69,7 @@ const UpdateCourse = () => {
         formData.append("imageFile", image);
       }
 
-      await axios.put(`https://backend-rest-faqo.onrender.com/api/update/${id}`, formData, {
+      await API.put(`/update/${id}`, formData, {
         headers: {
           "Content-Type": "multipart/form-data",
         },
@@ -219,7 +220,7 @@ const UpdateCourse = () => {
                   />
                 ) : course.imageName ? (
                   <img
-                    src={`https://backend-rest-faqo.onrender.com/api/course/${id}/image`}
+                    src={`/course/${id}/image`}
                     alt="Existing"
                     className="img-fluid mb-2 update-course-image-preview"
                   />

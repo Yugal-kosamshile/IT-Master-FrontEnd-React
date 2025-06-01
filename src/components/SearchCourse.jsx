@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import axios from 'axios';
+import API from '../axios';
 
 const SearchCourse = ({ onResults }) => {
   const [searchTerm, setSearchTerm] = useState('');
@@ -15,7 +16,7 @@ const SearchCourse = ({ onResults }) => {
     }
 
     try {
-      const res = await axios.get('https://backend-rest-faqo.onrender.com/api/get-course', {
+      const res = await API.get('/get-course', {
         params: { title: searchTerm }
       });
 

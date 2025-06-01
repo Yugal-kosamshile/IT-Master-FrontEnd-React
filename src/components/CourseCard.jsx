@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
 import { useSelector } from 'react-redux';
+import API from '../axios';
 
 function CourseCard({ course, onRemove }) {
   const [imageUrl, setImageUrl] = useState(null);
@@ -11,7 +12,7 @@ function CourseCard({ course, onRemove }) {
   useEffect(() => {
     const fetchImage = async () => {
       try {
-        const response = await axios.get(`https://backend-rest-faqo.onrender.com/api/course/${course.id}/image`, {
+        const response = await API.get(`/course/${course.id}/image`, {
           responseType: 'blob',
         });
         const url = URL.createObjectURL(response.data);
@@ -30,7 +31,7 @@ function CourseCard({ course, onRemove }) {
     if (!confirm) return;
 
     try {
-      await axios.delete(`https://backend-rest-faqo.onrender.com/api/delete/${course.id}`);
+      await API.delete(`/delete/${course.id}`);
       alert("Course removed successfully!");
       if (onRemove) onRemove(course.id);
     } catch (error) {

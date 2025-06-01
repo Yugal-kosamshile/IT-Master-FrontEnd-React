@@ -10,7 +10,7 @@
 import axios from "axios";
 
 const API = axios.create({
-  baseURL: "https://backend-rest-faqo.onrender.com/api",
+  baseURL: "https://it-master-rest.onrender.com/api",
 });
 
 delete API.defaults.headers.common["Authorization"];

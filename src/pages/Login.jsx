@@ -4,6 +4,7 @@ import { useNavigate, Link } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { loginSuccess } from "../../store";
 import "../styles/Login.css"; 
+import API from "../axios";
 
 function Login() {
   const [form, setForm] = useState({ username: "", password: "" });
@@ -30,7 +31,7 @@ function Login() {
     }
 
     try {
-      const res = await axios.post("https://backend-rest-faqo.onrender.com/api/login", form, {
+      const res = await API.post("/login", form, {
         headers: {
           "Content-Type": "application/json",
         },

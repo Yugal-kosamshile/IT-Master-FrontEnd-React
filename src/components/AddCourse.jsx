@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import '../styles/AddCourse.css';
+import API from '../axios';
 
 function AddCourse() {
   const [course, setCourse] = useState({
@@ -36,7 +37,7 @@ function AddCourse() {
     formData.append("course", new Blob([JSON.stringify(course)], { type: "application/json" }));
 
     try {
-      await axios.post('https://backend-rest-faqo.onrender.com/api/add-course', formData, {
+      await API.post('/add-course', formData, {
         headers: { 'Content-Type': 'multipart/form-data' }
       });
       alert("✅ Course added successfully");

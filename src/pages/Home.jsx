@@ -3,6 +3,7 @@ import CourseCard from '../components/CourseCard';
 import Enrollment from '../components/Enrollment.jsx';   
 import axios from 'axios';
 import Slider from "react-slick";
+import API from '../axios.jsx';
 
 
 function Home() {
@@ -41,7 +42,7 @@ const sliderSettings = {
 
 
   useEffect(() => {
-    axios.get('https://backend-rest-faqo.onrender.com/api/get-courses')
+    API.get('/get-courses')
       .then((res) => setCourses(res.data))
       .catch((err) => console.error('Error fetching courses:', err));
   }, []);

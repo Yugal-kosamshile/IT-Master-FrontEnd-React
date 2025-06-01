@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';  
+import API from '../axios';
 
 const Users = () => {
   const [users, setUsers] = useState([]);
@@ -7,7 +8,7 @@ const Users = () => {
   const [error, setError] = useState(null);
 
   useEffect(() => {
-    axios.get('https://backend-rest-faqo.onrender.com/api/get-users')
+    API.get('/get-users')
       .then(response => {
         setUsers(response.data);
         setLoading(false);
