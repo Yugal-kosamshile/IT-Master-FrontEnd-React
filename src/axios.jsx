@@ -11,6 +11,7 @@ import axios from "axios";
 
 const API = axios.create({
   baseURL: "https://it-master-rest.onrender.com/api",
+  // baseURL: "http://localhost:8082/api",
 });
 
 delete API.defaults.headers.common["Authorization"];
